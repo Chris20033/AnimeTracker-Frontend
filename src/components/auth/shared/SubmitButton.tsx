@@ -10,7 +10,7 @@ export function SubmitButton({ children, isLoading, loadingLabel, ...props }: Su
     <button
       type="submit"
       disabled={isLoading || props.disabled}
-      className="inline-flex w-full items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 font-black text-stone-950 transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:bg-stone-600 disabled:text-stone-300"
+      className="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--accent)] px-5 py-3 font-black text-[#271018] shadow-[0_18px_40px_var(--shadow)] outline-none transition hover:-translate-y-0.5 hover:brightness-105 focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:bg-[var(--surface-inset)] disabled:text-[var(--soft)] disabled:shadow-none"
       {...props}
     >
       {isLoading ? loadingLabel : children}

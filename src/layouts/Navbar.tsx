@@ -3,8 +3,10 @@ import { useLogout } from '@/hooks/useLogout'
 import { useAuthStore } from '@/store/auth.store'
 
 function navLinkClass(isActive: boolean) {
-  return `rounded-full px-4 py-2 text-sm font-medium transition ${
-    isActive ? 'bg-stone-100 text-stone-950' : 'text-stone-300 hover:bg-white/10 hover:text-white'
+  return `rounded-full px-4 py-2 text-sm font-bold outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
+    isActive
+      ? 'bg-[var(--page-fg)] text-[var(--page-bg)] shadow-[0_12px_30px_var(--shadow)]'
+      : 'text-[var(--muted)] hover:bg-[var(--surface-inset)] hover:text-[var(--page-fg)]'
   }`
 }
 
@@ -19,7 +21,7 @@ export function Navbar() {
   }
 
   return (
-    <nav aria-label="Navegacion principal" className="hidden items-center gap-2 sm:flex">
+    <nav aria-label="Navegacion principal" className="flex w-full flex-wrap items-center gap-2 rounded-[1.4rem] border border-[var(--line)] bg-[var(--surface)] p-1.5 shadow-[0_18px_50px_var(--shadow)] backdrop-blur lg:w-auto lg:rounded-full">
       <NavLink to="/" className={({ isActive }) => navLinkClass(isActive)}>
         Inicio
       </NavLink>
@@ -33,7 +35,7 @@ export function Navbar() {
             type="button"
             onClick={handleLogout}
             disabled={logoutMutation.isPending}
-            className="rounded-full border border-amber-200/30 px-4 py-2 text-sm font-bold text-amber-100 transition hover:bg-amber-200 hover:text-stone-950 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-full border border-[var(--line)] px-4 py-2 text-sm font-bold text-[var(--accent-strong)] outline-none transition hover:bg-[var(--accent)] hover:text-[#271018] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {logoutMutation.isPending ? 'Cerrando...' : 'Cerrar sesion'}
           </button>
@@ -46,8 +48,10 @@ export function Navbar() {
           <NavLink
             to="/registro"
             className={({ isActive }) =>
-              `rounded-full px-4 py-2 text-sm font-medium transition ${
-                isActive ? 'bg-amber-300 text-stone-950' : 'text-amber-100 hover:bg-amber-300/15'
+              `rounded-full px-4 py-2 text-sm font-bold outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
+                isActive
+                  ? 'bg-[var(--accent)] text-[#271018] shadow-[0_12px_30px_var(--shadow)]'
+                  : 'text-[var(--accent-strong)] hover:bg-[var(--accent-soft)]'
               }`
             }
           >

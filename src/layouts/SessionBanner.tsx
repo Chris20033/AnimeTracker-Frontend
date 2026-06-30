@@ -8,8 +8,8 @@ export function SessionBanner() {
   }
 
   return (
-    <div className="mx-auto -mt-2 w-full max-w-6xl px-5 pb-4 text-right text-sm text-stone-400 sm:px-8">
-      Sesion activa como <span className="font-bold text-amber-100">{session.user.username}</span>
+    <div className="mx-auto -mt-1 w-full max-w-6xl px-5 pb-4 text-sm text-[var(--muted)] sm:px-8 lg:text-right">
+      Sesion activa como <span className="font-black text-[var(--accent-strong)]">{session.user.username}</span>
     </div>
   )
 }

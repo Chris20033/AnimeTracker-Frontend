@@ -3,8 +3,8 @@ import { type FormEvent, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { validateLoginForm, type LoginFormErrors } from '@/utils/validate-login-form'
 import { useLogin } from '@/hooks/useLogin'
-import { SubmitButton } from '@/components/shared/SubmitButton'
-import { TextField } from '@/components/shared/TextField'
+import { SubmitButton } from '@/components/auth/shared/SubmitButton'
+import { TextField } from '@/components/auth/shared/TextField'
 
 export function LoginForm() {
   const loginMutation = useLogin()
@@ -35,7 +35,11 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-black/30 backdrop-blur sm:p-8">
+    <form onSubmit={handleSubmit} className="rounded-[2rem] border border-[var(--line)] bg-[var(--surface-strong)] p-6 shadow-[0_30px_80px_var(--shadow)] backdrop-blur sm:p-8">
+      <div className="mb-6 flex items-center justify-between border-b border-[var(--line)] pb-4">
+        <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--soft)]">Member pass</p>
+        <p className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-black text-[var(--accent-strong)]">Login</p>
+      </div>
       <div className="grid gap-5">
         <TextField
           label="Correo"
@@ -47,7 +51,7 @@ export function LoginForm() {
           onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
-          label="Contrasena"
+          label="Contraseña"
           name="password"
           type="password"
           autoComplete="current-password"
@@ -55,13 +59,13 @@ export function LoginForm() {
           error={errors.password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        {errors.form ? <p className="rounded-2xl border border-red-300/20 bg-red-400/10 px-4 py-3 text-sm font-semibold text-red-100">{errors.form}</p> : null}
+        {errors.form ? <p className="rounded-2xl border border-red-300/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-[var(--danger)]">{errors.form}</p> : null}
         <SubmitButton isLoading={loginMutation.isPending} loadingLabel="Entrando...">
           Iniciar sesion
         </SubmitButton>
-        <p className="text-center text-sm text-stone-400">
+        <p className="text-center text-sm text-[var(--muted)]">
           Aun no tienes cuenta?{' '}
-          <Link to="/registro" className="font-bold text-amber-200 hover:text-amber-100">
+          <Link to="/registro" className="font-black text-[var(--accent-strong)] outline-none hover:text-[var(--accent)] focus:rounded-md focus:ring-4 focus:ring-[var(--focus)]">
             Registrate
           </Link>
         </p>
