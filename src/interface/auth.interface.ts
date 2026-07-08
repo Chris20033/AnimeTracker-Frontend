@@ -17,6 +17,16 @@ export interface AuthApiResponse {
   data: AuthSession
 }
 
+export interface MessageApiResponse {
+  message: string
+}
+
+export interface ValidateResetTokenApiResponse {
+  data: {
+    valid: boolean
+  }
+}
+
 export interface LoginPayload {
   email: string
   password: string
@@ -26,4 +36,13 @@ export interface RegisterPayload {
   username: string
   email: string
   password: string
+}
+
+export interface ForgotPasswordPayload {
+  email: string
+}
+
+export interface ResetPasswordPayload {
+  token: string
+  newPassword: string
 }

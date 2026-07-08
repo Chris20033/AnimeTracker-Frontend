@@ -3,8 +3,8 @@ import { type FormEvent, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { validateLoginForm, type LoginFormErrors } from '@/utils/validate-login-form'
 import { useLogin } from '@/hooks/useLogin'
-import { SubmitButton } from '@/components/shared/SubmitButton'
-import { TextField } from '@/components/shared/TextField'
+import { SubmitButton } from '@/components/auth/shared/SubmitButton'
+import { TextField } from '@/components/auth/shared/TextField'
 
 export function LoginForm() {
   const loginMutation = useLogin()
@@ -35,7 +35,14 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-black/30 backdrop-blur sm:p-8">
+    <form onSubmit={handleSubmit} className="ledger-panel p-5 sm:p-7">
+      <div className="mb-6 flex items-start justify-between gap-4 border-b border-[var(--line)] pb-5">
+        <div>
+          <p className="ledger-kicker">Acceso</p>
+          <h2 className="mt-2 text-2xl ledger-title">Continuar temporada</h2>
+        </div>
+        <p className="ledger-chip bg-[var(--accent-soft)] text-[var(--accent-strong)]">Login</p>
+      </div>
       <div className="grid gap-5">
         <TextField
           label="Correo"
@@ -47,7 +54,7 @@ export function LoginForm() {
           onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
-          label="Contrasena"
+          label="Contraseña"
           name="password"
           type="password"
           autoComplete="current-password"
@@ -55,13 +62,18 @@ export function LoginForm() {
           error={errors.password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        {errors.form ? <p className="rounded-2xl border border-red-300/20 bg-red-400/10 px-4 py-3 text-sm font-semibold text-red-100">{errors.form}</p> : null}
+        <div className="-mt-2 text-right">
+          <Link to="/forgot-password" className="ledger-link text-sm">
+            Olvide mi contrasena
+          </Link>
+        </div>
+        {errors.form ? <p role="alert" className="state-error px-4 py-3 text-sm font-semibold">{errors.form}</p> : null}
         <SubmitButton isLoading={loginMutation.isPending} loadingLabel="Entrando...">
-          Iniciar sesion
+          Iniciar sesión
         </SubmitButton>
-        <p className="text-center text-sm text-stone-400">
+        <p className="text-center text-sm text-[var(--muted)]">
           Aun no tienes cuenta?{' '}
-          <Link to="/registro" className="font-bold text-amber-200 hover:text-amber-100">
+          <Link to="/registro" className="ledger-link">
             Registrate
           </Link>
         </p>

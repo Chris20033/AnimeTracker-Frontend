@@ -1,5 +1,14 @@
 import { apiClient } from '@/services/api.service'
-import type { AuthApiResponse, AuthSession, LoginPayload, RegisterPayload } from '@/interface/auth.interface'
+import type {
+  AuthApiResponse,
+  AuthSession,
+  ForgotPasswordPayload,
+  LoginPayload,
+  MessageApiResponse,
+  RegisterPayload,
+  ResetPasswordPayload,
+  ValidateResetTokenApiResponse,
+} from '@/interface/auth.interface'
 
 export async function loginService(payload: LoginPayload): Promise<AuthSession> {
   // Backend: POST /api/auth/login
@@ -22,4 +31,28 @@ export async function logoutService(): Promise<void> {
   // Header is attached by api.service.ts when an accessToken exists.
   // Response: 204 No Content
   await apiClient.post('/auth/logout')
+}
+
+export async function forgotPasswordService(payload: ForgotPasswordPayload): Promise<string> {
+  // Backend: POST /api/auth/forgot-password
+  // Request: { email }
+  // Response: { message }
+  const response = await apiClient.post<MessageApiResponse>('/auth/forgot-password', payload)
+  return response.data.message
+}
+
+export async function resetPasswordService(payload: ResetPasswordPayload): Promise<string> {
+  // Backend: POST /api/auth/reset-password
+  // Request: { token, newPassword }
+  // Response: { message }
+  const response = await apiClient.post<MessageApiResponse>('/auth/reset-password', payload)
+  return response.data.message
+}
+
+export async function validateResetTokenService(token: string): Promise<boolean> {
+  // Backend: POST /api/auth/validate-reset-token
+  // Request: { token }
+  // Response: { data: { valid: true } }
+  const response = await apiClient.post<ValidateResetTokenApiResponse>('/auth/validate-reset-token', { token })
+  return response.data.data.valid
 }
