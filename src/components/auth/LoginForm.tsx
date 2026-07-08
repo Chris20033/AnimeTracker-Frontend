@@ -35,10 +35,13 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-[2rem] border border-[var(--line)] bg-[var(--surface-strong)] p-6 shadow-[0_30px_80px_var(--shadow)] backdrop-blur sm:p-8">
-      <div className="mb-6 flex items-center justify-between border-b border-[var(--line)] pb-4">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--soft)]">Member pass</p>
-        <p className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-black text-[var(--accent-strong)]">Login</p>
+    <form onSubmit={handleSubmit} className="ledger-panel p-5 sm:p-7">
+      <div className="mb-6 flex items-start justify-between gap-4 border-b border-[var(--line)] pb-5">
+        <div>
+          <p className="ledger-kicker">Acceso</p>
+          <h2 className="mt-2 text-2xl ledger-title">Continuar temporada</h2>
+        </div>
+        <p className="ledger-chip bg-[var(--accent-soft)] text-[var(--accent-strong)]">Login</p>
       </div>
       <div className="grid gap-5">
         <TextField
@@ -59,13 +62,18 @@ export function LoginForm() {
           error={errors.password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        {errors.form ? <p className="rounded-2xl border border-red-300/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-[var(--danger)]">{errors.form}</p> : null}
+        <div className="-mt-2 text-right">
+          <Link to="/forgot-password" className="ledger-link text-sm">
+            Olvide mi contrasena
+          </Link>
+        </div>
+        {errors.form ? <p role="alert" className="state-error px-4 py-3 text-sm font-semibold">{errors.form}</p> : null}
         <SubmitButton isLoading={loginMutation.isPending} loadingLabel="Entrando...">
-          Iniciar sesion
+          Iniciar sesión
         </SubmitButton>
         <p className="text-center text-sm text-[var(--muted)]">
           Aun no tienes cuenta?{' '}
-          <Link to="/registro" className="font-black text-[var(--accent-strong)] outline-none hover:text-[var(--accent)] focus:rounded-md focus:ring-4 focus:ring-[var(--focus)]">
+          <Link to="/registro" className="ledger-link">
             Registrate
           </Link>
         </p>

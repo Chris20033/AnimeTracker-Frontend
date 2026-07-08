@@ -12,6 +12,7 @@ export function TextField({ label, error, id, ...props }: TextFieldProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const isPasswordField = props.type === 'password'
   const inputType = isPasswordField && isPasswordVisible ? 'text' : props.type
+  const isDisabled = Boolean(props.disabled)
 
   return (
     <div className="block">
@@ -23,7 +24,7 @@ export function TextField({ label, error, id, ...props }: TextFieldProps) {
           id={inputId}
           aria-invalid={Boolean(error)}
           aria-describedby={errorId}
-          className={`w-full rounded-2xl border bg-[var(--surface-inset)] px-4 py-3 text-[var(--page-fg)] outline-none transition placeholder:text-[var(--soft)] focus:ring-4 ${
+          className={`w-full rounded-[var(--radius-md)] border bg-[var(--surface-inset)] px-4 py-3 text-[var(--page-fg)] outline-none transition placeholder:text-[var(--soft)] disabled:cursor-not-allowed disabled:opacity-70 focus:ring-4 ${
             isPasswordField ? 'pr-14' : ''
           } ${
             error
@@ -37,6 +38,7 @@ export function TextField({ label, error, id, ...props }: TextFieldProps) {
         {isPasswordField ? (
           <ShowPasswordButton
             isPasswordVisible={isPasswordVisible}
+            disabled={isDisabled}
             onToggle={() => setIsPasswordVisible((currentValue) => !currentValue)}
           />
         ) : null}
@@ -52,10 +54,11 @@ export function TextField({ label, error, id, ...props }: TextFieldProps) {
 
 interface ShowPasswordButtonProps {
   isPasswordVisible: boolean
+  disabled: boolean
   onToggle: () => void
 }
 
-function ShowPasswordButton({ isPasswordVisible, onToggle }: ShowPasswordButtonProps) {
+function ShowPasswordButton({ isPasswordVisible, disabled, onToggle }: ShowPasswordButtonProps) {
   const iconId = isPasswordVisible ? 'eye-off-icon' : 'eye-icon'
 
   return (
@@ -63,8 +66,9 @@ function ShowPasswordButton({ isPasswordVisible, onToggle }: ShowPasswordButtonP
       type="button"
       aria-label={isPasswordVisible ? 'Ocultar contrasena' : 'Mostrar contrasena'}
       aria-pressed={isPasswordVisible}
+      disabled={disabled}
       onClick={onToggle}
-      className="absolute right-2 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-xl text-[var(--muted)] transition hover:bg-[var(--accent-soft)] hover:text-[var(--accent-strong)] focus:outline-none focus:ring-4 focus:ring-[var(--focus)]"
+      className="absolute right-2 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-[0.9rem] text-[var(--muted)] transition hover:bg-[var(--accent-soft)] hover:text-[var(--accent-strong)] focus:outline-none focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-[var(--muted)]"
     >
       <svg aria-hidden="true" className="size-5">
         <use href={`/icons.svg#${iconId}`} />

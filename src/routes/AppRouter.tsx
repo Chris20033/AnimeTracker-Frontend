@@ -2,12 +2,14 @@ import { createBrowserRouter } from 'react-router-dom'
 import { AuthLayout } from '@/layouts/AuthLayout'
 import { MainLayout } from '@/layouts/MainLayout'
 import { DashboardPage } from '@/pages/dashboard/DashboardPage'
+import { ForgotPasswordPage } from '@/pages/auth/ForgotPasswordPage'
 import { HomePage } from '@/pages/dashboard/HomePage'
 import { LoginPage } from '@/pages/auth/LoginPage'
-import { NotFoundPage } from '@/pages/not-found/NotFoundPage'
+import { NotFoundPage } from '@/pages/shared/NotFoundPage'
 import { PrivateRoute } from '@/routes/PrivateRoute'
 import { PublicRoute } from '@/routes/PublicRoute'
 import { RegisterPage } from '@/pages/auth/RegisterPage'
+import { ResetPasswordPage } from '@/pages/auth/ResetPasswordPage'
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
               {
                 path: 'registro',
                 element: <RegisterPage />,
+              },
+              {
+                path: 'forgot-password',
+                element: <ForgotPasswordPage />,
+              },
+              {
+                path: 'reset-password',
+                element: <ResetPasswordPage />,
               },
             ],
           },

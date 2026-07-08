@@ -3,9 +3,9 @@ import { useLogout } from '@/hooks/useLogout'
 import { useAuthStore } from '@/store/auth.store'
 
 function navLinkClass(isActive: boolean) {
-  return `rounded-full px-4 py-2 text-sm font-bold outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
+  return `min-h-11 rounded-full px-4 py-2.5 text-sm font-black outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
     isActive
-      ? 'bg-[var(--page-fg)] text-[var(--page-bg)] shadow-[0_12px_30px_var(--shadow)]'
+      ? 'bg-[var(--nav-active-bg)] text-[var(--nav-active-fg)]'
       : 'text-[var(--muted)] hover:bg-[var(--surface-inset)] hover:text-[var(--page-fg)]'
   }`
 }
@@ -21,7 +21,7 @@ export function Navbar() {
   }
 
   return (
-    <nav aria-label="Navegacion principal" className="flex w-full flex-wrap items-center gap-2 rounded-[1.4rem] border border-[var(--line)] bg-[var(--surface)] p-1.5 shadow-[0_18px_50px_var(--shadow)] backdrop-blur lg:w-auto lg:rounded-full">
+    <nav aria-label="Navegacion principal" className="flex w-full flex-wrap items-center gap-1.5 rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] p-1.5 shadow-[0_14px_36px_var(--shadow)] lg:w-auto lg:rounded-full">
       <NavLink to="/" className={({ isActive }) => navLinkClass(isActive)}>
         Inicio
       </NavLink>
@@ -35,7 +35,7 @@ export function Navbar() {
             type="button"
             onClick={handleLogout}
             disabled={logoutMutation.isPending}
-            className="rounded-full border border-[var(--line)] px-4 py-2 text-sm font-bold text-[var(--accent-strong)] outline-none transition hover:bg-[var(--accent)] hover:text-[#271018] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60"
+            className="min-h-11 rounded-full border border-[var(--line)] px-4 py-2.5 text-sm font-black text-[var(--accent-strong)] outline-none transition hover:bg-[var(--accent)] hover:text-[var(--action-ink)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {logoutMutation.isPending ? 'Cerrando...' : 'Cerrar sesion'}
           </button>
@@ -48,9 +48,9 @@ export function Navbar() {
           <NavLink
             to="/registro"
             className={({ isActive }) =>
-              `rounded-full px-4 py-2 text-sm font-bold outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
+              `min-h-11 rounded-full px-4 py-2.5 text-sm font-black outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
                 isActive
-                  ? 'bg-[var(--accent)] text-[#271018] shadow-[0_12px_30px_var(--shadow)]'
+                  ? 'bg-[var(--accent)] text-white'
                   : 'text-[var(--accent-strong)] hover:bg-[var(--accent-soft)]'
               }`
             }
