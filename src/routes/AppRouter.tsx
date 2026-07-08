@@ -7,6 +7,8 @@ import { HomePage } from '@/pages/dashboard/HomePage'
 import { LoginPage } from '@/pages/auth/LoginPage'
 import { NotFoundPage } from '@/pages/shared/NotFoundPage'
 import { PrivateRoute } from '@/routes/PrivateRoute'
+import { ProfilePage } from '@/pages/user/ProfilePage'
+import { PublicProfilePage } from '@/pages/user/PublicProfilePage'
 import { PublicRoute } from '@/routes/PublicRoute'
 import { RegisterPage } from '@/pages/auth/RegisterPage'
 import { ResetPasswordPage } from '@/pages/auth/ResetPasswordPage'
@@ -47,11 +49,19 @@ export const router = createBrowserRouter([
         ],
       },
       {
+        path: 'u/:username',
+        element: <PublicProfilePage />,
+      },
+      {
         element: <PrivateRoute />,
         children: [
           {
             path: 'dashboard',
             element: <DashboardPage />,
+          },
+          {
+            path: 'profile',
+            element: <ProfilePage />,
           },
         ],
       },
