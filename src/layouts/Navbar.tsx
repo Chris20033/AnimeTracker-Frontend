@@ -21,7 +21,7 @@ export function Navbar() {
   }
 
   return (
-    <nav aria-label="Navegacion principal" className="flex w-full flex-wrap items-center gap-1.5 rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] p-1.5 shadow-[0_14px_36px_var(--shadow)] lg:w-auto lg:rounded-full">
+    <nav aria-label="Navegacion principal" className="flex w-full min-w-0 flex-wrap items-center gap-1.5 rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] p-1.5 shadow-[0_14px_36px_var(--shadow)] lg:w-auto lg:justify-end lg:rounded-full">
       <NavLink to="/" className={({ isActive }) => navLinkClass(isActive)}>
         Inicio
       </NavLink>
@@ -30,6 +30,9 @@ export function Navbar() {
         <>
           <NavLink to="/dashboard" className={({ isActive }) => navLinkClass(isActive)}>
             Dashboard
+          </NavLink>
+          <NavLink to="/profile" className={({ isActive }) => navLinkClass(isActive)}>
+            Perfil
           </NavLink>
           <button
             type="button"

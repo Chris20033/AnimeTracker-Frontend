@@ -10,6 +10,7 @@
 
 - Use React, TypeScript, Vite, Tailwind CSS, React Router, Axios, TanStack Query and Zustand.
 - Use Axios for HTTP through `src/services/api.service.ts`.
+- `src/services/api.service.ts` must always read `baseURL` from `import.meta.env.VITE_API_URL`; do not add fallback URLs or hardcoded local API defaults.
 - Use TanStack Query for server mutations/queries.
 - Use Zustand for global client state such as session or theme.
 - Prefer imports with `@/...` for source files.
