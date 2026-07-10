@@ -1,11 +1,10 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./styles/globals.css";
+import { AnimeTrackerApp } from "./app/AnimeTrackerApp";
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { AnimeTrackerApp } from './AnimeTrackerApp'
-
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AnimeTrackerApp/>
+    <AnimeTrackerApp />
   </StrictMode>,
-)
+);
