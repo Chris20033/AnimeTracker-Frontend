@@ -9,8 +9,8 @@
 ## Architecture
 
 - Use React, TypeScript, Vite, Tailwind CSS, React Router, Axios, TanStack Query and Zustand.
-- Use Axios for HTTP through `src/services/api.service.ts`.
-- `src/services/api.service.ts` must always read `baseURL` from `import.meta.env.VITE_API_URL`; do not add fallback URLs or hardcoded local API defaults.
+- Use Axios for HTTP through `src/shared/lib/apiClient.ts`.
+- `src/shared/lib/apiClient.ts` must always read `baseURL` from `import.meta.env.VITE_API_URL`; do not add fallback URLs or hardcoded local API defaults.
 - Use TanStack Query for server mutations/queries.
 - Use Zustand for global client state such as session or theme.
 - Prefer imports with `@/...` for source files.
@@ -20,8 +20,8 @@
 ## TypeScript
 
 - Prefer `interface` over `type` for props, models, payloads and errors.
-- Keep API contracts in `src/interface/`.
-- Keep form validation helpers in `src/utils/`.
+- Keep API contracts in feature-local `types/` folders.
+- Keep form validation helpers near their feature in `utils/` folders.
 - Avoid `any` unless there is no reasonable typed alternative.
 
 ## UI/UX
@@ -36,15 +36,11 @@
 
 ## Project Structure
 
-- `src/actions/`: thin wrappers around services for mutations.
-- `src/components/`: reusable UI and domain components.
-- `src/config/`: app-level configuration such as query client.
-- `src/hooks/`: TanStack Query hooks and reusable React hooks.
-- `src/interface/`: shared TypeScript interfaces.
-- `src/layouts/`: layout and navigation components.
-- `src/pages/`: route-level pages.
-- `src/routes/`: router and route guards.
-- `src/services/`: API clients and endpoint services.
+- `src/app/`: app shell, layouts, router and app-level wiring.
+- `src/features/`: feature-local pages, components, hooks, actions, services, types and utils.
+- `src/shared/`: reusable cross-feature UI, pages and infrastructure.
+- `src/store/`: Zustand stores.
+- `src/styles/`: global styles and design tokens.
 - `src/store/`: Zustand stores.
 - `src/utils/`: validation and small pure helpers.
 
