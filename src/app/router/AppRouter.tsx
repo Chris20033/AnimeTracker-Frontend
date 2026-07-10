@@ -9,6 +9,8 @@ import { HomePage } from "@/features/home/pages/HomePage";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import { NotFoundPage } from "@/shared/pages/NotFoundPage";
 import { PrivateRoute } from "@/app/router/PrivateRoute";
+import { ProfilePage } from "@/features/user/pages/ProfilePage";
+import { PublicProfilePage } from "@/features/user/pages/PublicProfilePage";
 import { PublicRoute } from "@/app/router/PublicRoute";
 import { RegisterPage } from "@/features/auth/pages/RegisterPage";
 import { ResetPasswordPage } from "@/features/auth/pages/ResetPasswordPage";
@@ -57,11 +59,19 @@ export const router = createBrowserRouter([
         element: <AnimeDetailPage />,
       },
       {
+        path: "u/:username",
+        element: <PublicProfilePage />,
+      },
+      {
         element: <PrivateRoute />,
         children: [
           {
             path: "dashboard",
             element: <DashboardPage />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
           },
         ],
       },

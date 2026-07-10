@@ -40,6 +40,9 @@ export function Navbar() {
           >
             Dashboard
           </NavLink>
+          <NavLink to="/profile" className={({ isActive }) => navLinkClass(isActive)}>
+            Perfil
+          </NavLink>
           <button
             type="button"
             onClick={handleLogout}
