@@ -8,8 +8,24 @@ export function EmptyAnimeState() {
   )
 }
 
-export function AnimeErrorState() {
-  return <div className="state-error p-5 text-center font-semibold">No se pudo cargar el catalogo. Intenta de nuevo en unos segundos.</div>
+interface AnimeErrorStateProps {
+  onRetry?: () => void
+}
+
+export function AnimeErrorState({ onRetry }: AnimeErrorStateProps) {
+  return (
+    <div className="state-error grid gap-4 p-5 text-center font-semibold">
+      <div>
+        <p>No se pudo cargar el catalogo.</p>
+        <p className="mt-1 text-sm opacity-85">El proveedor externo de anime no respondio. Intenta de nuevo o cambia los filtros.</p>
+      </div>
+      {onRetry ? (
+        <button type="button" onClick={onRetry} className="mx-auto min-h-11 rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-2.5 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">
+          Reintentar
+        </button>
+      ) : null}
+    </div>
+  )
 }
 
 export function AnimeResultSkeleton() {

@@ -72,7 +72,7 @@ export function AnimeSearchPage() {
       </div>
 
       {catalogQuery.isLoading ? <AnimeResultSkeleton /> : null}
-      {catalogQuery.isError ? <AnimeErrorState /> : null}
+      {catalogQuery.isError ? <AnimeErrorState onRetry={() => void catalogQuery.refetch()} /> : null}
       {!catalogQuery.isLoading && !catalogQuery.isError && results.length === 0 ? <EmptyAnimeState /> : null}
 
       {results.length > 0 ? (
