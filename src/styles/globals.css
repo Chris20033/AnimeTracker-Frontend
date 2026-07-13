@@ -229,6 +229,11 @@ input {
   -webkit-tap-highlight-color: transparent;
 }
 
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--focus);
+}
+
 .app-shell {
   min-height: 100vh;
   overflow-x: clip;
@@ -321,6 +326,51 @@ input {
   border-radius: var(--radius-md);
   background: var(--danger-soft);
   color: var(--danger);
+}
+
+.screen-state {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 12% 0%, var(--accent-soft), transparent 18rem),
+    var(--surface-strong);
+  box-shadow: 0 24px 64px var(--shadow);
+}
+
+.screen-state::before {
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  content: "";
+  pointer-events: none;
+}
+
+.screen-state > * {
+  position: relative;
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-inset);
+}
+
+.skeleton-shimmer::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--page-fg) 10%, transparent), transparent);
+  content: "";
+  transform: translateX(-100%);
+  animation: skeleton-sweep 1.35s ease-in-out infinite;
+}
+
+@keyframes skeleton-sweep {
+  to {
+    transform: translateX(100%);
+  }
 }
 
 .broadcast-board {

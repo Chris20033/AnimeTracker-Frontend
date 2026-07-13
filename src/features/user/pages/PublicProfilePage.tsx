@@ -84,7 +84,7 @@ function PublicStatisticsPanel({ profileStatistics, statistics, isLoading, isErr
   }
 
   if (isLoading) {
-    return <section className="ledger-panel h-80 animate-pulse" aria-busy="true" />
+    return <section className="ledger-panel skeleton-shimmer h-80" aria-busy="true" />
   }
 
   if (isError) {
@@ -116,10 +116,10 @@ function PublicStatisticsPanel({ profileStatistics, statistics, isLoading, isErr
 function PublicProfileSkeleton() {
   return (
     <section className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:px-8" aria-busy="true">
-      <div className="ledger-panel h-80 animate-pulse" />
+      <div className="ledger-panel skeleton-shimmer h-80" />
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(24rem,0.68fr)]">
-        <div className="ledger-panel h-64 animate-pulse" />
-        <div className="ledger-panel h-64 animate-pulse" />
+        <div className="ledger-panel skeleton-shimmer h-64" />
+        <div className="ledger-panel skeleton-shimmer h-64" />
       </div>
     </section>
   )

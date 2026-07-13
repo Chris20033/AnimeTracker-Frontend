@@ -4,7 +4,7 @@ export function LibrarySkeleton() {
   return (
     <div className="grid gap-4 lg:grid-cols-2" aria-busy="true">
       {Array.from({ length: 6 }).map((_, index) => (
-        <div key={index} className="ledger-panel h-80 animate-pulse" />
+        <div key={index} className="ledger-panel skeleton-shimmer h-80" />
       ))}
     </div>
   )
@@ -16,7 +16,7 @@ interface LibraryErrorStateProps {
 
 export function LibraryErrorState({ onRetry }: LibraryErrorStateProps) {
   return (
-    <div className="state-error grid gap-4 p-6 text-center font-semibold">
+    <div role="alert" className="state-error grid gap-4 p-6 text-center font-semibold">
       <div>
         <p>No se pudo cargar tu biblioteca.</p>
         <p className="mt-1 text-sm opacity-85">Revisa tu sesion o intenta de nuevo en unos segundos.</p>
@@ -34,7 +34,7 @@ interface EmptyLibraryStateProps {
 
 export function EmptyLibraryState({ query }: EmptyLibraryStateProps) {
   return (
-    <div className="ledger-panel p-6 text-center sm:p-10">
+    <div className="screen-state p-6 text-center sm:p-10">
       <p className="ledger-kicker">{query ? 'Sin coincidencias' : 'Biblioteca vacia'}</p>
       <h2 className="mt-3 text-3xl ledger-title">{query ? `No encontramos "${query}"` : 'Empieza con tu primer anime'}</h2>
       <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">{query ? 'Prueba con el titulo en ingles, romanizado o japones si esta disponible en Kitsu.' : 'Busca una serie, entra al detalle y agregala a tu lista personal para seguir episodios, estado y notas.'}</p>

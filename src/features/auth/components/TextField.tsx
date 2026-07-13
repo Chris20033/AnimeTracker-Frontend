@@ -44,7 +44,7 @@ export function TextField({ label, error, id, ...props }: TextFieldProps) {
         ) : null}
       </div>
       {error ? (
-        <span id={errorId} className="mt-2 block text-sm font-semibold text-[var(--danger)]">
+        <span id={errorId} role="alert" className="mt-2 block text-sm font-semibold text-[var(--danger)]">
           {error}
         </span>
       ) : null}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import menuDarkUrl from '@/assets/menu-dark.svg'
 import menuLightUrl from '@/assets/menu-light.svg'
@@ -36,6 +36,19 @@ export function MobileNav() {
   function closeMenu() {
     setIsOpen(false)
   }
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen])
 
   return (
     <div className="sm:hidden">

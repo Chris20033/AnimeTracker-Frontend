@@ -57,10 +57,10 @@ export function ProfilePage() {
 function ProfileSkeleton() {
   return (
     <section className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:px-8" aria-busy="true">
-      <div className="ledger-panel h-80 animate-pulse" />
+      <div className="ledger-panel skeleton-shimmer h-80" />
       <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.65fr)]">
-        <div className="ledger-panel h-96 animate-pulse" />
-        <div className="ledger-panel h-72 animate-pulse" />
+        <div className="ledger-panel skeleton-shimmer h-96" />
+        <div className="ledger-panel skeleton-shimmer h-72" />
       </div>
     </section>
   )
