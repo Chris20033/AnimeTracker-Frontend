@@ -19,7 +19,7 @@ export function LibraryPage() {
   const libraryQuery = useLibrary({ status, q: query || undefined, page, limit: LIBRARY_PAGE_LIMIT })
   const entries = libraryQuery.data?.data ?? []
   const pagination = libraryQuery.data?.pagination
-  const pageTopRef = useScrollIntoViewOnChange<HTMLElement>(page)
+  const entriesHeaderRef = useScrollIntoViewOnChange<HTMLDivElement>(page)
 
   useEffect(() => {
     setSearchValue(query)
@@ -76,7 +76,7 @@ export function LibraryPage() {
   }
 
   return (
-    <section ref={pageTopRef} className="grid scroll-mt-4 gap-6 py-8 lg:scroll-mt-6 lg:py-10">
+    <section className="grid scroll-mt-4 gap-6 py-8 lg:scroll-mt-6 lg:py-10">
       <div className="ledger-panel relative overflow-hidden p-5 sm:p-8 lg:p-10">
         <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_70%_35%,var(--accent-soft),transparent_18rem)] lg:block" />
         <div className="relative max-w-3xl">
@@ -103,7 +103,7 @@ export function LibraryPage() {
         ) : null}
       </form>
 
-      <div className="flex flex-wrap items-end justify-between gap-3">
+      <div ref={entriesHeaderRef} className="scroll-mt-24 flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="ledger-kicker">Entradas</p>
           <h2 className="mt-2 text-2xl ledger-title">{query ? `Busqueda: ${query}` : status ? libraryStatusLabels[status] : 'Toda la biblioteca'}</h2>

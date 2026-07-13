@@ -91,16 +91,16 @@ export function LibraryEntryCard({ entry }: LibraryEntryCardProps) {
 
   return (
     <article className={`ledger-panel overflow-hidden border-l-4 p-3 sm:p-4 ${statusTone.accentClassName}`}>
-      <div className="grid gap-3 sm:grid-cols-[5.5rem_minmax(0,1fr)_auto] sm:items-start">
-        <Link to={`/anime/${entry.anime.source}/${entry.anime.externalId}`} className="group block w-24 overflow-hidden rounded-[var(--radius-md)] bg-[var(--surface-inset)] outline-none focus:ring-4 focus:ring-[var(--focus)] sm:w-full">
+      <div className="grid grid-cols-[5.25rem_minmax(0,1fr)] gap-3 sm:grid-cols-[5.5rem_minmax(0,1fr)_auto] sm:items-start">
+        <Link to={`/anime/${entry.anime.source}/${entry.anime.externalId}`} className="group block w-full overflow-hidden rounded-[var(--radius-md)] bg-[var(--surface-inset)] outline-none focus:ring-4 focus:ring-[var(--focus)]">
           <div className="aspect-[3/4]">
             {entry.anime.imageUrl ? <img src={entry.anime.imageUrl} alt={entry.anime.title} className="size-full object-cover transition duration-300 group-hover:scale-105" /> : <div className="grid size-full place-items-center text-xs font-black text-[var(--soft)]">Sin imagen</div>}
           </div>
         </Link>
 
-        <div className="min-w-0">
+        <div className="min-w-0 self-start">
           <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-black ring-1 ${statusTone.badgeClassName}`}>{libraryStatusLabels[entry.status]}</span>
-          <Link to={`/anime/${entry.anime.source}/${entry.anime.externalId}`} className="mt-1 block truncate text-xl ledger-title outline-none transition hover:text-[var(--accent-strong)] focus:ring-4 focus:ring-[var(--focus)] sm:text-2xl">
+          <Link to={`/anime/${entry.anime.source}/${entry.anime.externalId}`} className="mt-1 block text-lg ledger-title outline-none transition hover:text-[var(--accent-strong)] focus:ring-4 focus:ring-[var(--focus)] sm:truncate sm:text-2xl">
             {entry.anime.title}
           </Link>
           {secondaryTitle ? <p className="mt-1 truncate text-sm font-semibold text-[var(--soft)]">{secondaryTitle}</p> : null}
@@ -110,23 +110,24 @@ export function LibraryEntryCard({ entry }: LibraryEntryCardProps) {
             <span className={`rounded-full px-2 py-1 ring-1 ${animeScoreTone.className}`} title={animeScoreTone.label}>{entry.anime.score ?? 'Sin score'}</span>
           </div>
 
-          <dl className="mt-3 grid gap-2 text-sm font-bold text-[var(--muted)] sm:grid-cols-3">
-            <div className="ledger-inset px-3 py-2">
-              <dt className="text-xs font-black tracking-[0.1em] text-[var(--soft)]">Progreso</dt>
-              <dd className="mt-1 text-[var(--page-fg)]">{entry.episodesWatched} / {entry.anime.episodes ?? '??'}</dd>
-            </div>
-            <div className="ledger-inset px-3 py-2">
-              <dt className="text-xs font-black tracking-[0.1em] text-[var(--soft)]">Mi score</dt>
-              <dd className="mt-1 text-[var(--page-fg)]">{entry.personalScore ?? 'Sin score'}</dd>
-            </div>
-            <div className="ledger-inset px-3 py-2">
-              <dt className="text-xs font-black tracking-[0.1em] text-[var(--soft)]">Notas</dt>
-              <dd className="mt-1 truncate text-[var(--page-fg)]">{entry.notes || 'Sin notas'}</dd>
-            </div>
-          </dl>
         </div>
 
-        <div className="flex flex-wrap items-start gap-2 sm:grid sm:justify-items-end">
+        <dl className="col-span-2 grid gap-2 text-sm font-bold text-[var(--muted)] sm:col-span-1 sm:col-start-2 sm:row-start-2 sm:grid-cols-3">
+          <div className="ledger-inset px-3 py-2">
+            <dt className="text-xs font-black tracking-[0.1em] text-[var(--soft)]">Progreso</dt>
+            <dd className="mt-1 text-[var(--page-fg)]">{entry.episodesWatched} / {entry.anime.episodes ?? '??'}</dd>
+          </div>
+          <div className="ledger-inset px-3 py-2">
+            <dt className="text-xs font-black tracking-[0.1em] text-[var(--soft)]">Mi score</dt>
+            <dd className="mt-1 text-[var(--page-fg)]">{entry.personalScore ?? 'Sin score'}</dd>
+          </div>
+          <div className="ledger-inset px-3 py-2">
+            <dt className="text-xs font-black tracking-[0.1em] text-[var(--soft)]">Notas</dt>
+            <dd className="mt-1 truncate text-[var(--page-fg)]">{entry.notes || 'Sin notas'}</dd>
+          </div>
+        </dl>
+
+        <div className="col-span-2 flex flex-wrap items-start gap-2 sm:col-span-1 sm:col-start-3 sm:row-start-1 sm:grid sm:justify-items-end">
           <FavoriteToggleButton source={entry.anime.source} externalId={entry.anime.externalId} title={entry.anime.title} />
           <button type="button" onClick={handleDelete} disabled={deleteEntry.isPending} className="min-h-10 rounded-full border border-[var(--line)] px-4 py-2 text-sm font-black text-[var(--danger)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60">
             {deleteEntry.isPending ? 'Eliminando...' : 'Eliminar'}

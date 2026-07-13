@@ -22,7 +22,7 @@ export function AnimeSearchPage() {
   const pagination = catalogQuery.data?.pagination
   const query = searchParams.get('q')?.trim() ?? ''
   const activeFilterCount = getActiveFilterCount(searchParams)
-  const pageTopRef = useScrollIntoViewOnChange<HTMLElement>(page)
+  const resultsHeaderRef = useScrollIntoViewOnChange<HTMLDivElement>(page)
 
   useEffect(() => {
     setFormState(getFormState(searchParams))
@@ -44,7 +44,7 @@ export function AnimeSearchPage() {
   }
 
   return (
-    <section ref={pageTopRef} className="grid scroll-mt-4 gap-6 py-8 lg:scroll-mt-6 lg:py-10">
+    <section className="grid scroll-mt-4 gap-6 py-8 lg:scroll-mt-6 lg:py-10">
       <div className="ledger-panel relative overflow-hidden p-5 sm:p-8 lg:p-10">
         <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_70%_35%,var(--accent-soft),transparent_18rem)] lg:block" />
         <div className="relative max-w-3xl">
@@ -65,7 +65,7 @@ export function AnimeSearchPage() {
         />
       </div>
 
-      <div className="flex flex-wrap items-end justify-between gap-3">
+      <div ref={resultsHeaderRef} className="scroll-mt-24 flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="ledger-kicker">Catalogo</p>
           <h2 className="mt-2 text-2xl ledger-title">{activeFilterCount > 0 ? `${activeFilterCount} filtros activos` : 'Todos los titulos'}</h2>

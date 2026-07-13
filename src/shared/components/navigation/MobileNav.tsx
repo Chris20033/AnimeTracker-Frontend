@@ -55,6 +55,7 @@ export function MobileNav() {
             {isAuthenticated ? (
               <>
                 <NavLink to="/library" onClick={closeMenu} className={({ isActive }) => mobileLinkClass(isActive)}>Biblioteca</NavLink>
+                <NavLink to="/dashboard" onClick={closeMenu} className={({ isActive }) => mobileLinkClass(isActive)}>Dashboard</NavLink>
                 <NavLink to="/profile" onClick={closeMenu} className={({ isActive }) => mobileLinkClass(isActive)}>Perfil</NavLink>
                 <button type="button" onClick={() => void handleLogout()} disabled={logoutMutation.isPending} className="flex min-h-11 items-center rounded-[var(--radius-md)] border border-[var(--line)] px-4 py-2.5 text-sm font-black text-[var(--accent-strong)] outline-none transition hover:bg-[var(--accent)] hover:text-[var(--action-ink)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60">
                   {logoutMutation.isPending ? 'Cerrando...' : 'Cerrar sesion'}

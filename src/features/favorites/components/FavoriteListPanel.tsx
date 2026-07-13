@@ -12,11 +12,16 @@ interface FavoriteListPanelProps {
   emptyTitle: string
   emptyDescription: string
   action?: ReactNode
+  panelClassName?: string
+  listClassName?: string
 }
 
-export function FavoriteListPanel({ title, eyebrow, favorites, isLoading = false, isError = false, emptyTitle, emptyDescription, action }: FavoriteListPanelProps) {
+export function FavoriteListPanel({ title, eyebrow, favorites, isLoading = false, isError = false, emptyTitle, emptyDescription, action, panelClassName, listClassName }: FavoriteListPanelProps) {
+  const favoritePanelClassName = panelClassName ?? 'ledger-panel overflow-hidden p-5 sm:p-7'
+  const favoritesListClassName = listClassName ?? 'mt-5 max-h-none space-y-2 overflow-visible lg:max-h-[28rem] lg:overflow-y-auto lg:pr-1'
+
   return (
-    <section className="ledger-panel overflow-hidden p-5 sm:p-7">
+    <section className={favoritePanelClassName}>
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-5">
         <div>
           <p className="ledger-kicker">{eyebrow}</p>
@@ -37,7 +42,7 @@ export function FavoriteListPanel({ title, eyebrow, favorites, isLoading = false
       ) : null}
 
       {favorites.length > 0 ? (
-        <div className="mt-5 max-h-none space-y-2 overflow-visible lg:max-h-[28rem] lg:overflow-y-auto lg:pr-1" aria-label="Lista de favoritos">
+        <div className={favoritesListClassName} aria-label="Lista de favoritos">
           {favorites.map((favorite) => <FavoriteAnimeCard key={favorite.id} favorite={favorite} />)}
         </div>
       ) : null}
