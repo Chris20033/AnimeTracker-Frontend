@@ -24,7 +24,9 @@ export function FavoriteToggleButton({ source, externalId, title, size = 'compac
   const error = addFavorite.error ?? deleteFavorite.error
 
   async function handleToggle() {
-    if (isPending) return
+    if (isPending) {
+      return
+    }
 
     if (favorite) {
       await deleteFavorite.mutateAsync(favorite.id)
@@ -47,7 +49,7 @@ export function FavoriteToggleButton({ source, externalId, title, size = 'compac
     <div className={size === 'panel' ? 'grid gap-2' : 'grid justify-items-end gap-1'}>
       <button type="button" onClick={() => void handleToggle()} disabled={isPending} aria-pressed={isFavorite} aria-label={isFavorite ? `Quitar ${title} de favoritos` : `Marcar ${title} como favorito`} className={getButtonClassName(size, isFavorite)}>
         <FavoriteIcon filled={isFavorite} />
-        <span>{isPending ? 'Actualizando...' : isFavorite ? 'Favorito' : 'Marcar favorito'}</span>
+        <span>{getButtonLabel(isPending, isFavorite)}</span>
       </button>
       {error ? <p role="alert" className="text-xs font-semibold text-[var(--danger)]">{getFavoriteErrorMessage(error)}</p> : null}
     </div>
@@ -56,6 +58,14 @@ export function FavoriteToggleButton({ source, externalId, title, size = 'compac
 
 function FavoriteIcon({ filled }: { filled: boolean }) {
   return <img src={filled ? starFilledUrl : starOutlineUrl} alt="" className="size-5" />
+}
+
+function getButtonLabel(isPending: boolean, isFavorite: boolean) {
+  if (isPending) {
+    return 'Actualizando...'
+  }
+
+  return isFavorite ? 'Favorito' : 'Marcar favorito'
 }
 
 function getButtonClassName(size: 'compact' | 'panel', isFavorite: boolean) {
@@ -75,9 +85,17 @@ function getFavoriteErrorMessage(error: unknown) {
   if (isAxiosError(error)) {
     const code = error.response?.data?.error?.code
 
-    if (code === 'FAVORITE_ALREADY_EXISTS') return 'Este anime ya esta en favoritos.'
-    if (code === 'RESOURCE_NOT_FOUND') return 'No encontramos este favorito. Recarga la pagina.'
-    if (code === 'EXTERNAL_ANIME_API_ERROR') return 'No se pudo consultar Kitsu para guardar el favorito.'
+    if (code === 'FAVORITE_ALREADY_EXISTS') {
+      return 'Este anime ya esta en favoritos.'
+    }
+
+    if (code === 'RESOURCE_NOT_FOUND') {
+      return 'No encontramos este favorito. Recarga la pagina.'
+    }
+
+    if (code === 'EXTERNAL_ANIME_API_ERROR') {
+      return 'No se pudo consultar Kitsu para guardar el favorito.'
+    }
   }
 
   return 'No se pudo actualizar favoritos.'

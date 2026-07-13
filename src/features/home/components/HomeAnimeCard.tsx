@@ -16,11 +16,11 @@ export function HomeAnimeCard({ anime }: HomeAnimeCardProps) {
       <div className="aspect-[3/4] bg-[var(--surface-inset)]">
         {anime.imageUrl ? <img src={anime.imageUrl} alt={anime.title} className="size-full object-cover transition duration-300 group-hover:scale-105" /> : <div className="grid size-full place-items-center text-sm font-black text-[var(--soft)]">Sin imagen</div>}
       </div>
-      <div className="grid gap-2 p-4">
-        <h3 className="line-clamp-2 min-h-12 text-base font-black leading-6 text-[var(--page-fg)]">{anime.title}</h3>
-        <div className="flex items-center justify-between gap-3 text-xs font-bold text-[var(--muted)]">
+      <div className="grid gap-2 p-3 sm:p-4">
+        <h3 className="line-clamp-2 min-h-10 text-sm font-black leading-5 text-[var(--page-fg)] sm:min-h-12 sm:text-base sm:leading-6">{anime.title}</h3>
+        <div className="flex items-center justify-between gap-2 text-[0.7rem] font-bold text-[var(--muted)] sm:gap-3 sm:text-xs">
           <span>{metaLabel}</span>
-          <span className={`rounded-full px-2 py-1 font-black ring-1 ${scoreTone.className}`} title={scoreTone.label}>{anime.score ?? 'N/A'}</span>
+          <span className={`rounded-full px-2 py-0.5 font-black ring-1 sm:py-1 ${scoreTone.className}`} title={scoreTone.label}>{anime.score ?? 'N/A'}</span>
         </div>
       </div>
     </Link>

@@ -22,7 +22,7 @@ export function AnimeSearchPage() {
   const pagination = catalogQuery.data?.pagination
   const query = searchParams.get('q')?.trim() ?? ''
   const activeFilterCount = getActiveFilterCount(searchParams)
-  const resultsHeaderRef = useScrollIntoViewOnChange(page)
+  const resultsHeaderRef = useScrollIntoViewOnChange<HTMLDivElement>(page)
 
   useEffect(() => {
     setFormState(getFormState(searchParams))
@@ -44,14 +44,14 @@ export function AnimeSearchPage() {
   }
 
   return (
-    <section className="grid gap-6 py-8 lg:py-10">
+    <section className="grid scroll-mt-4 gap-6 py-8 lg:scroll-mt-6 lg:py-10">
       <div className="ledger-panel relative overflow-hidden p-5 sm:p-8 lg:p-10">
         <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_70%_35%,var(--accent-soft),transparent_18rem)] lg:block" />
         <div className="relative max-w-3xl">
           <p className="ledger-kicker">Anime catalog</p>
           <h1 className="mt-3 text-4xl ledger-title sm:text-5xl lg:text-6xl">{query ? `Resultados para ${query}` : 'Explora el catalogo de anime'}</h1>
           <p className="ledger-copy mt-4 text-base sm:text-lg">
-            Descubre anime con busqueda, filtros publicos y paginacion servida por el backend de AnimeTracker.
+            Descubre anime con busqueda y filtros personalizados.
           </p>
         </div>
 

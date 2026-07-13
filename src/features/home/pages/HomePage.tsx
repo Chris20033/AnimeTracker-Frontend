@@ -18,7 +18,7 @@ export function HomePage() {
   const fallbackHero = hero ?? sections.featured[0] ?? sections.topAiring[0] ?? null
 
   return (
-    <section className="grid gap-8 py-6 sm:py-9 lg:py-12">
+    <section className="grid gap-7 py-5 sm:gap-8 sm:py-9 lg:py-12">
       <HomeHero anime={fallbackHero} />
       <HomeCarousel eyebrow="Featured reel" title="Destacados de la semana" items={sections.featured} />
       <HomeCarousel eyebrow="On air" title="En emision ahora" items={sections.topAiring} />

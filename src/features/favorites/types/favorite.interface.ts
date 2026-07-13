@@ -1,10 +1,15 @@
 export interface FavoriteAnime {
+  id?: string
   externalId: string
   source: 'KITSU'
   title: string
   titleEnglish: string | null
   alternativeTitles: string[]
   imageUrl: string | null
+  type?: string | null
+  year?: number | null
+  status?: string | null
+  score?: number | null
 }
 
 export interface FavoriteEntry {

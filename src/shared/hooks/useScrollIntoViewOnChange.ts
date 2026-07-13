@@ -1,19 +1,26 @@
 import { useEffect, useRef } from 'react'
+import type { RefObject } from 'react'
 
-const defaultScrollIntoViewOptions: ScrollIntoViewOptions = { behavior: 'smooth', block: 'start' }
+interface UseScrollIntoViewOnChangeOptions {
+  behavior?: ScrollBehavior
+  block?: ScrollLogicalPosition
+}
 
-export function useScrollIntoViewOnChange<T>(value: T, options: ScrollIntoViewOptions = defaultScrollIntoViewOptions) {
-  const elementRef = useRef<HTMLDivElement | null>(null)
-  const isFirstRunRef = useRef(true)
+export function useScrollIntoViewOnChange<TElement extends HTMLElement>(value: unknown, options: UseScrollIntoViewOnChangeOptions = {}): RefObject<TElement | null> {
+  const elementRef = useRef<TElement>(null)
+  const previousValueRef = useRef(value)
 
   useEffect(() => {
-    if (isFirstRunRef.current) {
-      isFirstRunRef.current = false
+    if (previousValueRef.current === value) {
       return
     }
 
-    elementRef.current?.scrollIntoView(options)
-  }, [value, options])
+    previousValueRef.current = value
+    elementRef.current?.scrollIntoView({
+      behavior: options.behavior ?? 'smooth',
+      block: options.block ?? 'start',
+    })
+  }, [options.behavior, options.block, value])
 
   return elementRef
 }

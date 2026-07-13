@@ -7,7 +7,7 @@ export function Footer() {
         <div>
           <p className="ledger-kicker">AnimeTracker</p>
           <p className="mt-2 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">
-            Catalogo, perfiles y seguimiento de anime construido como proyecto de portafolio. Los datos se sirven desde el backend de AnimeTracker.
+            Catalogo, perfiles y seguimiento de anime construido como proyecto de portafolio. Los datos se sirven desde la API de Kitsu.
           </p>
           <p className="mt-3 text-xs font-black uppercase tracking-[0.14em] text-[var(--soft)]">Proyecto de portafolio</p>
         </div>

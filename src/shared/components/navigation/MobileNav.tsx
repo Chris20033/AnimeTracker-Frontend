@@ -41,7 +41,7 @@ export function MobileNav() {
     <div className="sm:hidden">
       <div className="flex items-center gap-2">
         <ThemeToggle />
-        <button type="button" aria-label={isOpen ? 'Cerrar menu principal' : 'Abrir menu principal'} aria-expanded={isOpen} aria-controls="mobile-main-nav" onClick={() => setIsOpen((current) => !current)} className="grid min-h-10 min-w-10 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] shadow-[0_14px_32px_var(--shadow)] outline-none transition hover:bg-[var(--surface-strong)] focus:ring-4 focus:ring-[var(--focus)]">
+        <button type="button" aria-label={isOpen ? 'Cerrar menu principal' : 'Abrir menu principal'} aria-expanded={isOpen} aria-controls="mobile-main-nav" onClick={() => setIsOpen((current) => !current)} className="grid min-h-10 min-w-10 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--page-fg)] shadow-[0_14px_32px_var(--shadow)] outline-none transition hover:bg-[var(--surface-strong)] focus:ring-4 focus:ring-[var(--focus)]">
           <img src={iconUrl} alt="" className="size-5" />
         </button>
       </div>

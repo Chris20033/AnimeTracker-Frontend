@@ -78,7 +78,7 @@ function getControlsClassName(desktopAt: 'lg' | 'xl') {
 }
 
 function getMobileListClassName(desktopAt: 'lg' | 'xl') {
-  const baseClassName = 'mx-1 flex max-w-[calc(100vw-1.5rem)] snap-x snap-mandatory gap-3 overflow-x-auto px-0 pb-3 sm:mx-0 sm:max-w-full sm:gap-4'
+  const baseClassName = 'mx-1 flex max-w-[calc(100vw-1.5rem)] snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-3 sm:mx-0 sm:max-w-full sm:gap-4 sm:px-0'
 
   return desktopAt === 'lg' ? `${baseClassName} lg:hidden` : `${baseClassName} xl:hidden`
 }

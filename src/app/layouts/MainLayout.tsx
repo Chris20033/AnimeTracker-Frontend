@@ -21,7 +21,7 @@ export function MainLayout() {
           </div>
           <SearchBar />
         </div>
-        <div className="hidden min-w-0 justify-start gap-2 sm:flex lg:justify-end">
+        <div className="hidden min-w-0 items-start justify-start gap-2 sm:flex lg:justify-end">
           <Navbar />
           <ThemeToggle />
         </div>
