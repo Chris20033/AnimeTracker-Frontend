@@ -2,6 +2,7 @@ import { isAxiosError } from 'axios'
 import { type FormEvent, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { formatAnimeType } from '@/features/anime/utils/anime-display.utils'
+import { FavoriteToggleButton } from '@/features/favorites/components/FavoriteToggleButton'
 import { libraryStatusLabels, libraryStatusOptions } from '@/features/library/constants/library.constants'
 import { useDeleteLibraryEntry } from '@/features/library/hooks/useDeleteLibraryEntry'
 import { useUpdateLibraryEntry } from '@/features/library/hooks/useUpdateLibraryEntry'
@@ -125,9 +126,12 @@ export function LibraryEntryCard({ entry }: LibraryEntryCardProps) {
           </dl>
         </div>
 
-        <button type="button" onClick={handleDelete} disabled={deleteEntry.isPending} className="min-h-10 rounded-full border border-[var(--line)] px-4 py-2 text-sm font-black text-[var(--danger)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60 sm:justify-self-end">
-          {deleteEntry.isPending ? 'Eliminando...' : 'Eliminar'}
-        </button>
+        <div className="flex flex-wrap items-start gap-2 sm:grid sm:justify-items-end">
+          <FavoriteToggleButton source={entry.anime.source} externalId={entry.anime.externalId} title={entry.anime.title} />
+          <button type="button" onClick={handleDelete} disabled={deleteEntry.isPending} className="min-h-10 rounded-full border border-[var(--line)] px-4 py-2 text-sm font-black text-[var(--danger)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60">
+            {deleteEntry.isPending ? 'Eliminando...' : 'Eliminar'}
+          </button>
+        </div>
       </div>
 
       <details className="mt-3 rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface-inset)]">

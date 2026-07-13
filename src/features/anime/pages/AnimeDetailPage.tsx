@@ -6,6 +6,7 @@ import { InfoCard } from '@/features/anime/components/InfoCard'
 import { AnimeDetailError, AnimeDetailSkeleton } from '@/features/anime/components/AnimeDetailStates'
 import { formatSeason } from '@/features/anime/components/anime-detail.utils'
 import { formatAnimeStatus, formatAnimeType } from '@/features/anime/utils/anime-display.utils'
+import { FavoriteToggleButton } from '@/features/favorites/components/FavoriteToggleButton'
 import { AddToLibraryPanel } from '@/features/library/components/AddToLibraryPanel'
 
 export function AnimeDetailPage() {
@@ -36,6 +37,7 @@ export function AnimeDetailPage() {
           <Link to="/anime" className="ledger-link inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--line)] px-4">
             Volver al catalogo
           </Link>
+          <FavoriteToggleButton source={anime.source} externalId={anime.externalId} title={anime.title} size="panel" />
           <div className="grid grid-cols-2 gap-3">
             <MetricCard label="Score" value={anime.score ?? 'N/A'} score={anime.score} />
             <MetricCard label="Episodios" value={anime.episodes ?? 'N/A'} />

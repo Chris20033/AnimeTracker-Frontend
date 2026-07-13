@@ -1,5 +1,6 @@
 import { isAxiosError } from 'axios'
 import { Link, useParams } from 'react-router-dom'
+import { FavoriteListPanel } from '@/features/favorites/components/FavoriteListPanel'
 import { ProfileHeader } from '@/features/user/components/ProfileHeader'
 import { usePublicProfile } from '@/features/user/hooks/usePublicProfile'
 
@@ -35,30 +36,14 @@ export function PublicProfilePage() {
       <ProfileHeader username={profile.username} avatarUrl={profile.avatarUrl} bannerUrl={profile.bannerUrl} bio={profile.bio} eyebrow="Perfil publico" />
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,0.78fr)_minmax(22rem,0.62fr)]">
-        <section className="ledger-panel p-5 sm:p-7">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-5">
-            <div>
-              <p className="ledger-kicker">Favoritos</p>
-              <h2 className="mt-2 text-2xl ledger-title">Anime destacados</h2>
-            </div>
-            <span className="ledger-chip">{profile.favorites.length} favoritos</span>
-          </div>
-
-          {profile.favorites.length > 0 ? (
-            <div className="mt-5 grid gap-3">
-              {profile.favorites.map((_, index) => (
-                <article key={index} className="ledger-inset px-4 py-3 text-sm font-bold text-[var(--muted)]">
-                  Favorito #{index + 1}
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="mt-5 rounded-[var(--radius-lg)] border border-dashed border-[var(--line-strong)] bg-[var(--surface-inset)] p-6 text-center">
-              <p className="text-lg font-black text-[var(--page-fg)]">Sin favoritos publicos todavia</p>
-              <p className="mt-2 text-sm font-semibold leading-6 text-[var(--muted)]">Esta seccion queda lista para Sprint 8, cuando existan favoritos visibles.</p>
-            </div>
-          )}
-        </section>
+        <FavoriteListPanel
+          eyebrow="Favoritos"
+          title="Anime destacados"
+          favorites={profile.favorites}
+          emptyTitle="Sin favoritos publicos todavia"
+          emptyDescription="Cuando este usuario marque anime favoritos, apareceran aqui como su vitrina publica."
+          action={null}
+        />
 
         <section className="ledger-panel p-5 sm:p-7">
           <p className="ledger-kicker">Estadisticas</p>

@@ -24,7 +24,7 @@ export function HomeCarousel({ title, eyebrow, items, variant = 'anime' }: HomeC
       visibleCount={variant === 'recommendation' ? 3 : 5}
       desktopAt={variant === 'recommendation' ? 'lg' : 'xl'}
       desktopColumns={variant === 'recommendation' ? 3 : 5}
-      mobileItemClassName={variant === 'recommendation' ? 'w-[min(84vw,22rem)] sm:w-[24rem]' : 'w-[min(72vw,15rem)] sm:w-64'}
+      mobileItemClassName={variant === 'recommendation' ? 'w-[min(82vw,21rem)] sm:w-[23rem]' : 'w-[min(62vw,13rem)] sm:w-60 md:w-64'}
     />
   )
 }

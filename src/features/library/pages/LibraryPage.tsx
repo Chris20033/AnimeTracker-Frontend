@@ -7,6 +7,7 @@ import { EmptyLibraryState, LibraryErrorState, LibrarySkeleton } from '@/feature
 import { LibraryStatusTabs } from '@/features/library/components/LibraryStatusTabs'
 import { useLibrary } from '@/features/library/hooks/useLibrary'
 import type { LibraryStatus } from '@/features/library/types/library.interface'
+import { useScrollIntoViewOnChange } from '@/shared/hooks/useScrollIntoViewOnChange'
 
 export function LibraryPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -18,6 +19,7 @@ export function LibraryPage() {
   const libraryQuery = useLibrary({ status, q: query || undefined, page, limit: LIBRARY_PAGE_LIMIT })
   const entries = libraryQuery.data?.data ?? []
   const pagination = libraryQuery.data?.pagination
+  const pageTopRef = useScrollIntoViewOnChange<HTMLElement>(page)
 
   useEffect(() => {
     setSearchValue(query)
@@ -74,7 +76,7 @@ export function LibraryPage() {
   }
 
   return (
-    <section className="grid gap-6 py-8 lg:py-10">
+    <section ref={pageTopRef} className="grid scroll-mt-4 gap-6 py-8 lg:scroll-mt-6 lg:py-10">
       <div className="ledger-panel relative overflow-hidden p-5 sm:p-8 lg:p-10">
         <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_70%_35%,var(--accent-soft),transparent_18rem)] lg:block" />
         <div className="relative max-w-3xl">
