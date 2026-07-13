@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { formatAnimeStatus, formatAnimeType } from '@/features/anime/utils/anime-display.utils'
 import type { HomeAnimeItem } from '@/features/home/types/home.interface'
 import { getScoreTone } from '@/shared/utils/get-score-tone'
 
@@ -21,6 +22,8 @@ export function HomeHero({ anime }: HomeHeroProps) {
   }
 
   const scoreTone = getScoreTone(anime.score)
+  const typeLabel = formatAnimeType(anime.type)
+  const statusLabel = formatAnimeStatus(anime.status)
 
   return (
     <section className="relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--line)] bg-[var(--surface-strong)] shadow-[0_32px_90px_var(--shadow-strong)]">
@@ -41,10 +44,10 @@ export function HomeHero({ anime }: HomeHeroProps) {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            {anime.type ? <span className="ledger-chip">{anime.type}</span> : null}
+            {typeLabel ? <span className="ledger-chip">{typeLabel}</span> : null}
             {anime.year ? <span className="ledger-chip">{anime.year}</span> : null}
             {anime.episodes ? <span className="ledger-chip">{anime.episodes} episodios</span> : null}
-            {anime.status ? <span className="ledger-chip">{anime.status}</span> : null}
+            {statusLabel ? <span className="ledger-chip">{statusLabel}</span> : null}
           </div>
 
           {anime.genres.length > 0 ? (

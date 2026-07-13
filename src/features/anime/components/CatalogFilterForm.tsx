@@ -36,7 +36,7 @@ export function CatalogFilterForm({ formState, genres, genresLoading, onChange, 
           onChange={(value) => updateField('genre', value)}
         />
         <SelectInput label="Ordenar por" value={formState.orderBy} options={orderOptions} onChange={(value) => updateField('orderBy', value)} />
-        <SelectInput label="Orden" value={formState.sort} options={[{ value: 'asc', label: 'Asc' }, { value: 'desc', label: 'Desc' }]} onChange={(value) => updateField('sort', value as 'asc' | 'desc')} />
+        <SelectInput label="Orden" value={formState.sort} options={[{ value: 'desc', label: 'Mejores primero' }, { value: 'asc', label: 'Menores primero' }]} onChange={(value) => updateField('sort', value as 'asc' | 'desc')} />
         <div className="grid grid-cols-2 gap-3">
           <TextInput label="Score min" type="number" min="0" max="10" step="0.1" value={formState.minScore} onChange={(value) => updateField('minScore', value)} />
           <TextInput label="Score max" type="number" min="0" max="10" step="0.1" value={formState.maxScore} onChange={(value) => updateField('maxScore', value)} />

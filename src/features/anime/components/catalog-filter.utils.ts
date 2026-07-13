@@ -11,7 +11,7 @@ export function getCatalogParams(searchParams: URLSearchParams, page: number): A
     rating: searchParams.get('rating') || undefined,
     genres: searchParams.get('genres') || undefined,
     order_by: searchParams.get('order_by') || 'popularity',
-    sort: (searchParams.get('sort') as 'asc' | 'desc' | null) ?? 'asc',
+    sort: (searchParams.get('sort') as 'asc' | 'desc' | null) ?? 'desc',
     min_score: toOptionalNumber(searchParams.get('min_score')),
     max_score: toOptionalNumber(searchParams.get('max_score')),
   })
@@ -25,7 +25,7 @@ export function getFormState(searchParams: URLSearchParams): CatalogFormState {
     rating: searchParams.get('rating') ?? '',
     genre: searchParams.get('genres') ?? '',
     orderBy: searchParams.get('order_by') ?? 'popularity',
-    sort: (searchParams.get('sort') as 'asc' | 'desc' | null) ?? 'asc',
+    sort: (searchParams.get('sort') as 'asc' | 'desc' | null) ?? 'desc',
     minScore: searchParams.get('min_score') ?? '',
     maxScore: searchParams.get('max_score') ?? '',
   }
@@ -49,7 +49,7 @@ export function buildSearchParams(formState: CatalogFormState, page: number) {
 export function getActiveFilterCount(searchParams: URLSearchParams) {
   return ['q', 'type', 'status', 'rating', 'genres', 'order_by', 'sort', 'min_score', 'max_score'].filter((key) => {
     const value = searchParams.get(key)
-    return Boolean(value && !(key === 'order_by' && value === 'popularity') && !(key === 'sort' && value === 'asc'))
+    return Boolean(value && !(key === 'order_by' && value === 'popularity') && !(key === 'sort' && value === 'desc'))
   }).length
 }
 
