@@ -53,7 +53,7 @@ export function FavoriteListPanel({ title, eyebrow, favorites, isLoading = false
 function FavoriteListSkeleton() {
   return (
     <div className="mt-5 grid gap-2" aria-busy="true">
-      {Array.from({ length: 4 }, (_, index) => <div key={index} className="h-20 animate-pulse rounded-[var(--radius-md)] bg-[var(--surface-inset)]" />)}
+      {Array.from({ length: 4 }, (_, index) => <div key={index} className="skeleton-shimmer h-20 rounded-[var(--radius-md)]" />)}
     </div>
   )
 }
