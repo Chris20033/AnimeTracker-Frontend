@@ -1,6 +1,6 @@
 export interface HomeAnimeItem {
   externalId: string
-  source: 'JIKAN'
+  source: 'KITSU'
   title: string
   imageUrl: string | null
   type: string | null
@@ -18,7 +18,7 @@ export interface HomeAnimeItem {
 
 export interface HomeRecommendationItem {
   externalId: string
-  source: 'JIKAN'
+  source: 'KITSU'
   title: string
   imageUrl: string | null
   recommendationUrl: string | null

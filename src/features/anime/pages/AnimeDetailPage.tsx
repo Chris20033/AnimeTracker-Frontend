@@ -5,6 +5,8 @@ import { MetricCard } from '@/features/anime/components/MetricCard'
 import { InfoCard } from '@/features/anime/components/InfoCard'
 import { AnimeDetailError, AnimeDetailSkeleton } from '@/features/anime/components/AnimeDetailStates'
 import { formatSeason } from '@/features/anime/components/anime-detail.utils'
+import { formatAnimeStatus, formatAnimeType } from '@/features/anime/utils/anime-display.utils'
+import { AddToLibraryPanel } from '@/features/library/components/AddToLibraryPanel'
 
 export function AnimeDetailPage() {
   const { source, externalId } = useParams()
@@ -21,6 +23,8 @@ export function AnimeDetailPage() {
 
   const anime = detailQuery.data
   const airedDate = anime.airedFrom ? new Intl.DateTimeFormat('es-MX', { dateStyle: 'medium' }).format(new Date(anime.airedFrom)) : 'Pendiente'
+  const typeLabel = formatAnimeType(anime.type)
+  const statusLabel = formatAnimeStatus(anime.status)
 
   return (
     <section className="grid gap-6 py-8 lg:grid-cols-[minmax(18rem,0.42fr)_minmax(0,1fr)] lg:py-10">
@@ -37,13 +41,16 @@ export function AnimeDetailPage() {
             <MetricCard label="Episodios" value={anime.episodes ?? 'N/A'} />
           </div>
         </div>
+        <div className="border-t border-[var(--line)] p-5">
+          <AddToLibraryPanel anime={anime} />
+        </div>
       </aside>
 
       <div className="grid gap-6">
         <article className="ledger-panel p-5 sm:p-8">
           <div className="flex flex-wrap items-center gap-2">
             <span className="ledger-chip bg-[var(--accent-soft)] text-[var(--accent-strong)]">{anime.source}</span>
-            {anime.type ? <span className="ledger-chip">{anime.type}</span> : null}
+            {typeLabel ? <span className="ledger-chip">{typeLabel}</span> : null}
             {anime.year ? <span className="ledger-chip">{anime.year}</span> : null}
           </div>
 
@@ -66,7 +73,7 @@ export function AnimeDetailPage() {
         </article>
 
         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" aria-label="Informacion de anime">
-          <InfoCard label="Estado" value={anime.status ?? 'Pendiente'} />
+          <InfoCard label="Estado" value={statusLabel ?? 'Pendiente'} />
           <InfoCard label="Duracion" value={anime.duration ?? 'Pendiente'} />
           <InfoCard label="Estudio" value={anime.studio ?? 'Pendiente'} />
           <InfoCard label="Temporada" value={formatSeason(anime.season, anime.year)} />

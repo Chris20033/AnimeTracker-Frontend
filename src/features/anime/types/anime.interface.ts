@@ -7,7 +7,7 @@ export interface AnimePagination {
 
 export interface AnimeSearchItem {
   externalId: string
-  source: 'JIKAN'
+  source: 'KITSU'
   title: string
   imageUrl: string | null
   type: string | null
@@ -18,7 +18,7 @@ export interface AnimeSearchItem {
 
 export interface AnimeDetail {
   externalId: string
-  source: 'JIKAN'
+  source: 'KITSU'
   title: string
   titleEnglish: string | null
   synopsis: string | null

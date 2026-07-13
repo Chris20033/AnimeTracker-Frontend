@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { AnimeSearchItem } from '@/features/anime/types/anime.interface'
+import { formatAnimeStatus, formatAnimeType } from '@/features/anime/utils/anime-display.utils'
 import { getScoreTone } from '@/shared/utils/get-score-tone'
 
 interface AnimeResultCardProps {
@@ -8,6 +9,8 @@ interface AnimeResultCardProps {
 
 export function AnimeResultCard({ anime }: AnimeResultCardProps) {
   const scoreTone = getScoreTone(anime.score)
+  const typeLabel = formatAnimeType(anime.type)
+  const statusLabel = formatAnimeStatus(anime.status)
 
   return (
     <Link to={`/anime/${anime.source}/${anime.externalId}`} className="group ledger-panel overflow-hidden outline-none transition hover:-translate-y-1 hover:shadow-[0_28px_70px_var(--shadow-strong)] focus:ring-4 focus:ring-[var(--focus)]">
@@ -16,12 +19,12 @@ export function AnimeResultCard({ anime }: AnimeResultCardProps) {
       </div>
       <div className="p-4">
         <div className="flex flex-wrap gap-2">
-          {anime.type ? <span className="ledger-chip min-h-0 px-2 py-1 text-xs">{anime.type}</span> : null}
+          {typeLabel ? <span className="ledger-chip min-h-0 px-2 py-1 text-xs">{typeLabel}</span> : null}
           {anime.year ? <span className="ledger-chip min-h-0 px-2 py-1 text-xs">{anime.year}</span> : null}
         </div>
         <h3 className="mt-3 line-clamp-2 min-h-14 text-lg font-black leading-7 text-[var(--page-fg)]">{anime.title}</h3>
         <div className="mt-4 flex items-center justify-between gap-3 text-sm font-bold text-[var(--muted)]">
-          <span>{anime.status ?? 'Estado pendiente'}</span>
+          <span>{statusLabel ?? 'Estado pendiente'}</span>
           <span className={`rounded-full px-2.5 py-1 font-black ring-1 ${scoreTone.className}`} title={scoreTone.label}>{anime.score ?? 'N/A'}</span>
         </div>
       </div>

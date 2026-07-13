@@ -34,11 +34,8 @@ export function Navbar() {
 
       {isAuthenticated ? (
         <>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) => navLinkClass(isActive)}
-          >
-            Dashboard
+          <NavLink to="/library" className={({ isActive }) => navLinkClass(isActive)}>
+            Biblioteca
           </NavLink>
           <NavLink to="/profile" className={({ isActive }) => navLinkClass(isActive)}>
             Perfil

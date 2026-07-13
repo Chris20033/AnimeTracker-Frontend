@@ -7,6 +7,7 @@ import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import { ForgotPasswordPage } from "@/features/auth/pages/ForgotPasswordPage";
 import { HomePage } from "@/features/home/pages/HomePage";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
+import { LibraryPage } from "@/features/library/pages/LibraryPage";
 import { NotFoundPage } from "@/shared/pages/NotFoundPage";
 import { PrivateRoute } from "@/app/router/PrivateRoute";
 import { ProfilePage } from "@/features/user/pages/ProfilePage";
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
           {
             path: "profile",
             element: <ProfilePage />,
+          },
+          {
+            path: "library",
+            element: <LibraryPage />,
           },
         ],
       },
