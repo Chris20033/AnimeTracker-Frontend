@@ -231,7 +231,7 @@ input {
 
 .app-shell {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: clip;
   background:
     linear-gradient(90deg, transparent 0 31px, var(--line) 31px 32px, transparent 32px 64px),
     radial-gradient(circle at 8% 0%, var(--sakura-soft), transparent 23rem),

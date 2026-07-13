@@ -3,7 +3,7 @@ import { useLogout } from "@/features/auth/hooks/useLogout";
 import { useAuthStore } from "@/store/auth.store";
 
 function navLinkClass(isActive: boolean) {
-  return `min-h-11 rounded-full px-4 py-2.5 text-sm font-black outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
+  return `inline-flex min-h-9 items-center rounded-full px-3 py-2 text-xs font-black outline-none transition focus:ring-4 focus:ring-[var(--focus)] sm:min-h-11 sm:px-4 sm:py-2.5 sm:text-sm ${
     isActive
       ? "bg-[var(--nav-active-bg)] text-[var(--nav-active-fg)]"
       : "text-[var(--muted)] hover:bg-[var(--surface-inset)] hover:text-[var(--page-fg)]"
@@ -44,7 +44,7 @@ export function Navbar() {
             type="button"
             onClick={handleLogout}
             disabled={logoutMutation.isPending}
-            className="min-h-11 rounded-full border border-[var(--line)] px-4 py-2.5 text-sm font-black text-[var(--accent-strong)] outline-none transition hover:bg-[var(--accent)] hover:text-[var(--action-ink)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex min-h-9 items-center rounded-full border border-[var(--line)] px-3 py-2 text-xs font-black text-[var(--accent-strong)] outline-none transition hover:bg-[var(--accent)] hover:text-[var(--action-ink)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-11 sm:px-4 sm:py-2.5 sm:text-sm"
           >
             {logoutMutation.isPending ? "Cerrando..." : "Cerrar sesion"}
           </button>
@@ -60,7 +60,7 @@ export function Navbar() {
           <NavLink
             to="/registro"
             className={({ isActive }) =>
-              `min-h-11 rounded-full px-4 py-2.5 text-sm font-black outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${
+              `inline-flex min-h-9 items-center rounded-full px-3 py-2 text-xs font-black outline-none transition focus:ring-4 focus:ring-[var(--focus)] sm:min-h-11 sm:px-4 sm:py-2.5 sm:text-sm ${
                 isActive
                   ? "bg-[var(--accent)] text-white"
                   : "text-[var(--accent-strong)] hover:bg-[var(--accent-soft)]"

@@ -1,3 +1,5 @@
+import type { FavoriteEntry } from '@/features/favorites/types/favorite.interface'
+
 export interface PrivateUserProfile {
   id: string
   username: string
@@ -22,7 +24,7 @@ export interface PublicUserProfile {
   avatarUrl: string | null
   bannerUrl: string | null
   bio: string | null
-  favorites: unknown[]
+  favorites: FavoriteEntry[]
   statistics: UserStatistics
 }
 
