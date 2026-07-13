@@ -41,7 +41,7 @@ export function ResponsiveCarousel<TItem>({ title, eyebrow, items, getKey, rende
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="ledger-kicker">{eyebrow}</p>
-          <h2 id={titleId} className="mt-2 text-3xl ledger-title">{title}</h2>
+          <h2 id={titleId} className="mt-1.5 text-2xl ledger-title sm:mt-2 sm:text-3xl">{title}</h2>
         </div>
         <div className="flex items-center gap-2">
           <span className="ledger-chip">{items.length} {countLabel}</span>
@@ -78,7 +78,7 @@ function getControlsClassName(desktopAt: 'lg' | 'xl') {
 }
 
 function getMobileListClassName(desktopAt: 'lg' | 'xl') {
-  const baseClassName = '-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 sm:-mx-6 sm:px-6'
+  const baseClassName = 'mx-1 flex max-w-[calc(100vw-1.5rem)] snap-x snap-mandatory gap-3 overflow-x-auto px-0 pb-3 sm:mx-0 sm:max-w-full sm:gap-4'
 
   return desktopAt === 'lg' ? `${baseClassName} lg:hidden` : `${baseClassName} xl:hidden`
 }

@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { updateLibraryEntryAction } from '@/features/library/actions/update-library-entry.action'
+import { invalidateLibraryDependentQueries } from '@/features/library/utils/invalidate-library-dependent-queries'
 
 export function useUpdateLibraryEntry() {
   const queryClient = useQueryClient()
@@ -7,7 +8,7 @@ export function useUpdateLibraryEntry() {
   return useMutation({
     mutationFn: updateLibraryEntryAction,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['library'] })
+      await invalidateLibraryDependentQueries(queryClient)
     },
   })
 }

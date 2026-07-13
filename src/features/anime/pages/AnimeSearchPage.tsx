@@ -8,6 +8,7 @@ import { CatalogFilterForm } from '@/features/anime/components/CatalogFilterForm
 import { AnimeResultCard } from '@/features/anime/components/AnimeResultCard'
 import { AnimeErrorState, AnimeResultSkeleton, EmptyAnimeState } from '@/features/anime/components/AnimeSearchStates'
 import { CatalogPagination } from '@/features/anime/components/CatalogPagination'
+import { useScrollIntoViewOnChange } from '@/shared/hooks/useScrollIntoViewOnChange'
 
 export function AnimeSearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -21,6 +22,7 @@ export function AnimeSearchPage() {
   const pagination = catalogQuery.data?.pagination
   const query = searchParams.get('q')?.trim() ?? ''
   const activeFilterCount = getActiveFilterCount(searchParams)
+  const resultsHeaderRef = useScrollIntoViewOnChange(page)
 
   useEffect(() => {
     setFormState(getFormState(searchParams))
@@ -63,7 +65,7 @@ export function AnimeSearchPage() {
         />
       </div>
 
-      <div className="flex flex-wrap items-end justify-between gap-3">
+      <div ref={resultsHeaderRef} className="scroll-mt-24 flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="ledger-kicker">Catalogo</p>
           <h2 className="mt-2 text-2xl ledger-title">{activeFilterCount > 0 ? `${activeFilterCount} filtros activos` : 'Todos los titulos'}</h2>

@@ -7,6 +7,7 @@ import { EmptyLibraryState, LibraryErrorState, LibrarySkeleton } from '@/feature
 import { LibraryStatusTabs } from '@/features/library/components/LibraryStatusTabs'
 import { useLibrary } from '@/features/library/hooks/useLibrary'
 import type { LibraryStatus } from '@/features/library/types/library.interface'
+import { useScrollIntoViewOnChange } from '@/shared/hooks/useScrollIntoViewOnChange'
 
 export function LibraryPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -18,6 +19,7 @@ export function LibraryPage() {
   const libraryQuery = useLibrary({ status, q: query || undefined, page, limit: LIBRARY_PAGE_LIMIT })
   const entries = libraryQuery.data?.data ?? []
   const pagination = libraryQuery.data?.pagination
+  const entriesHeaderRef = useScrollIntoViewOnChange(page)
 
   useEffect(() => {
     setSearchValue(query)
@@ -101,7 +103,7 @@ export function LibraryPage() {
         ) : null}
       </form>
 
-      <div className="flex flex-wrap items-end justify-between gap-3">
+      <div ref={entriesHeaderRef} className="scroll-mt-24 flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="ledger-kicker">Entradas</p>
           <h2 className="mt-2 text-2xl ledger-title">{query ? `Busqueda: ${query}` : status ? libraryStatusLabels[status] : 'Toda la biblioteca'}</h2>

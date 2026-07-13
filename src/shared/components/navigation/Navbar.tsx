@@ -37,6 +37,9 @@ export function Navbar() {
           <NavLink to="/library" className={({ isActive }) => navLinkClass(isActive)}>
             Biblioteca
           </NavLink>
+          <NavLink to="/dashboard" className={({ isActive }) => navLinkClass(isActive)}>
+            Dashboard
+          </NavLink>
           <NavLink to="/profile" className={({ isActive }) => navLinkClass(isActive)}>
             Perfil
           </NavLink>

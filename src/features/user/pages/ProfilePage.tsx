@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FavoritesSection } from '@/features/favorites/components/FavoritesSection'
 import { ProfileEditForm } from '@/features/user/components/ProfileEditForm'
 import { ProfileHeader } from '@/features/user/components/ProfileHeader'
 import { useMyProfile } from '@/features/user/hooks/useMyProfile'
@@ -32,19 +33,22 @@ export function ProfilePage() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.65fr)]">
         <ProfileEditForm profile={profile} />
 
-        <aside className="ledger-panel p-5 sm:p-7">
-          <p className="ledger-kicker">Vista publica</p>
-          <h2 className="mt-2 text-2xl ledger-title">Comparte tu perfil</h2>
-          <p className="mt-3 text-sm font-semibold leading-7 text-[var(--muted)]">Tu pagina publica muestra avatar, banner, biografia, favoritos y estadisticas visibles.</p>
-          <Link to={`/u/${profile.username}`} className="mt-5 inline-flex min-h-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">
-            Ver perfil publico
-          </Link>
-          <div className="mt-6 grid gap-3 text-sm font-bold text-[var(--muted)]">
-            <p className="ledger-inset px-4 py-3">Avatar: {profile.avatarUrl ? 'configurado' : 'pendiente'}</p>
-            <p className="ledger-inset px-4 py-3">Banner: {profile.bannerUrl ? 'configurado' : 'pendiente'}</p>
-            <p className="ledger-inset px-4 py-3">Biografia: {profile.bio ? 'configurada' : 'pendiente'}</p>
-          </div>
-        </aside>
+        <div className="grid gap-6">
+          <aside className="ledger-panel p-5 sm:p-7">
+            <p className="ledger-kicker">Vista publica</p>
+            <h2 className="mt-2 text-2xl ledger-title">Comparte tu perfil</h2>
+            <p className="mt-3 text-sm font-semibold leading-7 text-[var(--muted)]">Tu pagina publica muestra avatar, banner, biografia, favoritos y estadisticas visibles.</p>
+            <Link to={`/u/${profile.username}`} className="mt-5 inline-flex min-h-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">
+              Ver perfil publico
+            </Link>
+            <div className="mt-6 grid gap-3 text-sm font-bold text-[var(--muted)]">
+              <p className="ledger-inset px-4 py-3">Avatar: {profile.avatarUrl ? 'configurado' : 'pendiente'}</p>
+              <p className="ledger-inset px-4 py-3">Banner: {profile.bannerUrl ? 'configurado' : 'pendiente'}</p>
+              <p className="ledger-inset px-4 py-3">Biografia: {profile.bio ? 'configurada' : 'pendiente'}</p>
+            </div>
+          </aside>
+          <FavoritesSection />
+        </div>
       </div>
     </section>
   )
