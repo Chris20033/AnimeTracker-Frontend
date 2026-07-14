@@ -7,9 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+.agents
+.env
+
 node_modules
 dist
 dist-ssr
+playwright-report
+test-results
 *.local
 
 # Editor directories and files
