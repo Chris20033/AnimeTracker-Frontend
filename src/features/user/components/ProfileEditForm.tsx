@@ -63,18 +63,18 @@ export function ProfileEditForm({ profile }: ProfileEditFormProps) {
         avatar,
         banner,
       })
-      setSuccessMessage('Perfil actualizado correctamente.')
+      setSuccessMessage('Profile updated successfully.')
     } catch (error) {
-      setErrors({ form: isAxiosError(error) ? 'Ese username ya esta en uso o los datos no son validos.' : 'No se pudo actualizar el perfil.' })
+      setErrors({ form: isAxiosError(error) ? 'That username is already in use or the data is invalid.' : "We couldn't update the profile." })
     }
   }
 
   return (
     <form onSubmit={handleSubmit} className="ledger-panel p-5 sm:p-7">
       <div className="mb-6 border-b border-[var(--line)] pb-5">
-        <p className="ledger-kicker">Edicion privada</p>
-        <h2 className="mt-2 text-2xl ledger-title">Ajustar identidad</h2>
-        <p className="mt-2 text-sm font-semibold text-[var(--muted)]">Estos datos alimentan tu perfil publico y tu sesion privada.</p>
+        <p className="ledger-kicker">Private edit</p>
+        <h2 className="mt-2 text-2xl ledger-title">Adjust identity</h2>
+        <p className="mt-2 text-sm font-semibold text-[var(--muted)]">This data powers your public profile and private session.</p>
       </div>
 
       <div className="grid gap-5">
@@ -86,7 +86,7 @@ export function ProfileEditForm({ profile }: ProfileEditFormProps) {
 
         <div className="block">
           <label htmlFor="bio" className="text-sm font-black text-[var(--page-fg)]">
-            Biografia
+            Bio
           </label>
           <textarea
             id="bio"
@@ -100,7 +100,7 @@ export function ProfileEditForm({ profile }: ProfileEditFormProps) {
             className="mt-2 w-full resize-none rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface-inset)] px-4 py-3 text-[var(--page-fg)] outline-none transition placeholder:text-[var(--soft)] focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--focus)]"
           />
           <div className="mt-2 flex items-center justify-between gap-3 text-sm font-semibold text-[var(--soft)]">
-            {errors.bio ? <span id="bio-error" className="text-[var(--danger)]">{errors.bio}</span> : <span id="bio-help">Maximo 500 caracteres.</span>}
+            {errors.bio ? <span id="bio-error" className="text-[var(--danger)]">{errors.bio}</span> : <span id="bio-help">Maximum 500 characters.</span>}
             <span>{bio.length}/500</span>
           </div>
         </div>
@@ -108,8 +108,8 @@ export function ProfileEditForm({ profile }: ProfileEditFormProps) {
         {errors.form ? <p role="alert" className="state-error px-4 py-3 text-sm font-semibold">{errors.form}</p> : null}
         {successMessage ? <p role="status" className="state-success px-4 py-3 text-sm font-semibold">{successMessage}</p> : null}
 
-        <SubmitButton isLoading={updateProfileMutation.isPending} loadingLabel="Guardando perfil...">
-          Guardar perfil
+        <SubmitButton isLoading={updateProfileMutation.isPending} loadingLabel="Saving profile...">
+          Save profile
         </SubmitButton>
       </div>
     </form>
@@ -134,7 +134,7 @@ function ImageField({ label, name, previewUrl, error, onChange }: ImageFieldProp
       </label>
       <div className="mt-2 overflow-hidden rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface-inset)]">
         <div className="grid h-28 place-items-center bg-[var(--surface)] text-sm font-black text-[var(--soft)]">
-          {previewUrl ? <img src={previewUrl} alt={`Preview de ${label.toLowerCase()}`} className="size-full object-cover" /> : 'Sin imagen'}
+          {previewUrl ? <img src={previewUrl} alt={`${label.toLowerCase()} preview`} className="size-full object-cover" /> : 'No image'}
         </div>
         <input
           id={name}
@@ -148,7 +148,7 @@ function ImageField({ label, name, previewUrl, error, onChange }: ImageFieldProp
         />
       </div>
       {error ? <span id={errorId} className="mt-2 block text-sm font-semibold text-[var(--danger)]">{error}</span> : null}
-      <p className="mt-2 text-xs font-bold text-[var(--soft)]">JPG, PNG o WebP. Maximo 5 MB.</p>
+      <p className="mt-2 text-xs font-bold text-[var(--soft)]">JPG, PNG, or WebP. Maximum 5 MB.</p>
     </div>
   )
 }

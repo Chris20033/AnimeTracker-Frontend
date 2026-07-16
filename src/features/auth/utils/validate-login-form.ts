@@ -10,11 +10,11 @@ export function validateLoginForm(email: string, password: string): LoginFormErr
   const errors: LoginFormErrors = {}
 
   if (!validateEmail(email)) {
-    errors.email = 'Ingresa un correo valido.'
+    errors.email = 'Enter a valid email address.'
   }
 
   if (!password) {
-    errors.password = 'Ingresa tu contrasena.'
+    errors.password = 'Enter your password.'
   }
 
   return errors

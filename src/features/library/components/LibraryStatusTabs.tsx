@@ -9,9 +9,9 @@ interface LibraryStatusTabsProps {
 
 export function LibraryStatusTabs({ activeStatus, onStatusChange }: LibraryStatusTabsProps) {
   return (
-    <div className="ledger-surface flex gap-2 overflow-x-auto p-2" role="tablist" aria-label="Filtrar biblioteca por estado">
+    <div className="ledger-surface flex gap-2 overflow-x-auto p-2" role="tablist" aria-label="Filter library by status">
       <button type="button" role="tab" aria-selected={!activeStatus} onClick={() => onStatusChange(undefined)} className={`min-h-11 shrink-0 rounded-full px-4 py-2 text-sm font-black outline-none transition focus:ring-4 focus:ring-[var(--focus)] ${!activeStatus ? 'bg-[var(--accent)] text-[var(--action-ink)]' : 'text-[var(--muted)] hover:bg-[var(--surface-inset)] hover:text-[var(--page-fg)]'}`}>
-        Todos
+        All
       </button>
       {libraryStatusOptions.map((option) => {
         const tone = getLibraryStatusTone(option.value)

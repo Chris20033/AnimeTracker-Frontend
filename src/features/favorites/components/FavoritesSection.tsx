@@ -7,13 +7,13 @@ export function FavoritesSection() {
 
   return (
     <FavoriteListPanel
-      eyebrow="Favoritos"
-      title="Mis anime destacados"
+      eyebrow="Favorites"
+      title="My featured anime"
       favorites={favorites}
       isLoading={favoritesQuery.isLoading}
       isError={favoritesQuery.isError}
-      emptyTitle="Todavia no tienes favoritos"
-      emptyDescription="Marca una estrella desde el detalle o desde tu biblioteca para destacar tus anime preferidos."
+      emptyTitle="You do not have favorites yet"
+      emptyDescription="Mark a star from the detail page or your library to feature your favorite anime."
     />
   )
 }

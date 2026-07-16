@@ -6,10 +6,10 @@ export function HomeErrorState({ onRetry }: HomeErrorStateProps) {
   return (
     <section role="alert" className="screen-state my-8 p-6 text-center sm:p-8">
       <p className="ledger-kicker">Home broadcast</p>
-      <h1 className="mt-3 text-3xl ledger-title">No se pudo cargar la cartelera</h1>
-      <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">La API externa no respondio correctamente. Puedes intentar recargar las secciones.</p>
+      <h1 className="mt-3 text-3xl ledger-title">We couldn't load the lineup</h1>
+      <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">The external API did not respond correctly. You can try reloading the sections.</p>
       <button type="button" onClick={onRetry} className="mt-6 min-h-12 rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">
-        Reintentar
+        Retry
       </button>
     </section>
   )
