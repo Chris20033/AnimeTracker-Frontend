@@ -23,35 +23,35 @@ describe('auth forms', () => {
   it('shows login validation errors', () => {
     renderWithProviders(<LoginForm />)
 
-    fireEvent.click(screen.getByRole('button', { name: 'Iniciar sesión' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Sign in' }))
 
-    expect(screen.getByText('Ingresa un correo valido.')).toBeInTheDocument()
-    expect(screen.getByText('Ingresa tu contrasena.')).toBeInTheDocument()
+    expect(screen.getByText('Enter a valid email address.')).toBeInTheDocument()
+    expect(screen.getByText('Enter your password.')).toBeInTheDocument()
   })
 
   it('shows register validation errors', () => {
     renderWithProviders(<RegisterForm />)
 
-    fireEvent.click(screen.getByRole('button', { name: 'Crear cuenta' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Create account' }))
 
-    expect(screen.getByText('El username debe tener entre 3 y 30 caracteres.')).toBeInTheDocument()
-    expect(screen.getByText('Ingresa un correo valido.')).toBeInTheDocument()
-    expect(screen.getByText('La contrasena debe tener al menos 8 caracteres.')).toBeInTheDocument()
+    expect(screen.getByText('Username must be between 3 and 30 characters.')).toBeInTheDocument()
+    expect(screen.getByText('Enter a valid email address.')).toBeInTheDocument()
+    expect(screen.getByText('Password must be at least 8 characters.')).toBeInTheDocument()
   })
 
   it('shows forgot password validation errors', () => {
     renderWithProviders(<ForgotPasswordForm />)
 
-    fireEvent.click(screen.getByRole('button', { name: 'Enviar enlace' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Send link' }))
 
-    expect(screen.getByText('Ingresa un correo valido.')).toBeInTheDocument()
+    expect(screen.getByText('Enter a valid email address.')).toBeInTheDocument()
   })
 
   it('shows reset password validation errors', () => {
     renderWithProviders(<ResetPasswordForm token="valid-token" />)
 
-    fireEvent.click(screen.getByRole('button', { name: 'Restablecer contrasena' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Reset password' }))
 
-    expect(screen.getByText('La nueva contrasena debe tener al menos 8 caracteres.')).toBeInTheDocument()
+    expect(screen.getByText('New password must be at least 8 characters.')).toBeInTheDocument()
   })
 })

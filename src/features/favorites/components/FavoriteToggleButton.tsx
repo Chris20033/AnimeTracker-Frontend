@@ -40,14 +40,14 @@ export function FavoriteToggleButton({ source, externalId, title, size = 'compac
     return (
       <Link to="/login" className={getLinkClassName(size)}>
         <FavoriteIcon filled={false} />
-        <span>Inicia sesion para guardar favorito</span>
+        <span>Sign in to save favorite</span>
       </Link>
     )
   }
 
   return (
     <div className={size === 'panel' ? 'grid gap-2' : 'grid justify-items-end gap-1'}>
-      <button type="button" onClick={() => void handleToggle()} disabled={isPending} aria-pressed={isFavorite} aria-label={isFavorite ? `Quitar ${title} de favoritos` : `Marcar ${title} como favorito`} className={getButtonClassName(size, isFavorite)}>
+      <button type="button" onClick={() => void handleToggle()} disabled={isPending} aria-pressed={isFavorite} aria-label={isFavorite ? `Remove ${title} from favorites` : `Mark ${title} as favorite`} className={getButtonClassName(size, isFavorite)}>
         <FavoriteIcon filled={isFavorite} />
         <span>{getButtonLabel(isPending, isFavorite)}</span>
       </button>
@@ -62,10 +62,10 @@ function FavoriteIcon({ filled }: { filled: boolean }) {
 
 function getButtonLabel(isPending: boolean, isFavorite: boolean) {
   if (isPending) {
-    return 'Actualizando...'
+    return 'Updating...'
   }
 
-  return isFavorite ? 'Favorito' : 'Marcar favorito'
+  return isFavorite ? 'Favorite' : 'Mark favorite'
 }
 
 function getButtonClassName(size: 'compact' | 'panel', isFavorite: boolean) {
@@ -86,17 +86,17 @@ function getFavoriteErrorMessage(error: unknown) {
     const code = error.response?.data?.error?.code
 
     if (code === 'FAVORITE_ALREADY_EXISTS') {
-      return 'Este anime ya esta en favoritos.'
+      return 'This anime is already in favorites.'
     }
 
     if (code === 'RESOURCE_NOT_FOUND') {
-      return 'No encontramos este favorito. Recarga la pagina.'
+      return "We couldn't find this favorite. Refresh the page."
     }
 
     if (code === 'EXTERNAL_ANIME_API_ERROR') {
-      return 'No se pudo consultar Kitsu para guardar el favorito.'
+      return "We couldn't reach Kitsu to save the favorite."
     }
   }
 
-  return 'No se pudo actualizar favoritos.'
+  return "We couldn't update favorites."
 }

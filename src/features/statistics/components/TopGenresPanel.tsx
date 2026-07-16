@@ -11,14 +11,14 @@ export function TopGenresPanel({ genres }: TopGenresPanelProps) {
   return (
     <section className="ledger-panel p-5 sm:p-7">
       <div className="border-b border-[var(--line)] pb-5">
-        <p className="ledger-kicker">Generos</p>
-        <h2 className="mt-2 text-2xl ledger-title">Tus patrones favoritos</h2>
+        <p className="ledger-kicker">Genres</p>
+        <h2 className="mt-2 text-2xl ledger-title">Your favorite patterns</h2>
       </div>
 
       {genres.length === 0 ? (
         <div className="mt-5 rounded-[var(--radius-lg)] border border-dashed border-[var(--line-strong)] bg-[var(--surface-inset)] p-6 text-center">
-          <p className="text-lg font-black text-[var(--page-fg)]">Sin generos dominantes</p>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--muted)]">Cuando tu biblioteca tenga mas entradas, aqui apareceran tus generos principales.</p>
+          <p className="text-lg font-black text-[var(--page-fg)]">No dominant genres</p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--muted)]">When your library has more entries, your main genres will appear here.</p>
         </div>
       ) : (
         <div className="mt-5 grid gap-3">
@@ -31,7 +31,7 @@ export function TopGenresPanel({ genres }: TopGenresPanelProps) {
                   <span className="text-[var(--page-fg)]">{index + 1}. {genre.name}</span>
                   <span className="text-[var(--muted)]">{formatStatNumber(genre.count)}</span>
                 </div>
-                <div className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--surface)]" aria-label={`${genre.name}: ${genre.count} entradas`}>
+                <div className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--surface)]" aria-label={`${genre.name}: ${genre.count} entries`}>
                   <div className="h-full rounded-full bg-[var(--accent)]" style={{ width: `${percentage}%` }} />
                 </div>
               </article>

@@ -13,16 +13,16 @@ export function StatusDistributionPanel({ distribution }: StatusDistributionPane
     <section className="ledger-panel p-5 sm:p-7">
       <div className="flex flex-wrap items-end justify-between gap-3 border-b border-[var(--line)] pb-5">
         <div>
-          <p className="ledger-kicker">Estados</p>
-          <h2 className="mt-2 text-2xl ledger-title">Distribucion de biblioteca</h2>
+          <p className="ledger-kicker">Statuses</p>
+          <h2 className="mt-2 text-2xl ledger-title">Library distribution</h2>
         </div>
-        <span className="ledger-chip">{formatStatNumber(total)} entradas</span>
+        <span className="ledger-chip">{formatStatNumber(total)} entries</span>
       </div>
 
       {total === 0 ? (
         <div className="mt-5 rounded-[var(--radius-lg)] border border-dashed border-[var(--line-strong)] bg-[var(--surface-inset)] p-6 text-center">
-          <p className="text-lg font-black text-[var(--page-fg)]">Aun no hay estados registrados</p>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--muted)]">Agrega anime a tu biblioteca para ver como se reparte tu actividad.</p>
+          <p className="text-lg font-black text-[var(--page-fg)]">No statuses recorded yet</p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[var(--muted)]">Add anime to your library to see how your activity is distributed.</p>
         </div>
       ) : (
         <div className="mt-5 grid gap-4">
@@ -35,7 +35,7 @@ export function StatusDistributionPanel({ distribution }: StatusDistributionPane
                   <span className="text-[var(--page-fg)]">{item.label}</span>
                   <span className="text-[var(--muted)]">{formatStatNumber(item.value)} · {percentage}%</span>
                 </div>
-                <div className="h-3 overflow-hidden rounded-full bg-[var(--surface-inset)]" aria-label={`${item.label}: ${item.value} entradas, ${percentage} por ciento`}>
+                <div className="h-3 overflow-hidden rounded-full bg-[var(--surface-inset)]" aria-label={`${item.label}: ${item.value} entries, ${percentage} percent`}>
                   <div className={`h-full rounded-full ${item.toneClassName}`} style={{ width: `${percentage}%` }} />
                 </div>
               </div>

@@ -19,17 +19,17 @@ const favorite: FavoriteEntry = {
 
 describe('FavoriteListPanel', () => {
   it('renders empty and error states', () => {
-    const { rerender } = renderWithProviders(<FavoriteListPanel eyebrow="Favoritos" title="Anime destacados" favorites={[]} emptyTitle="Sin favoritos" emptyDescription="Marca tus anime favoritos." />)
+    const { rerender } = renderWithProviders(<FavoriteListPanel eyebrow="Favorites" title="Featured anime" favorites={[]} emptyTitle="No favorites" emptyDescription="Mark your favorite anime." />)
 
-    expect(screen.getByText('Sin favoritos')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Explorar catalogo' })).toBeInTheDocument()
+    expect(screen.getByText('No favorites')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Explore catalog' })).toBeInTheDocument()
 
-    rerender(<FavoriteListPanel eyebrow="Favoritos" title="Anime destacados" favorites={[]} isError emptyTitle="Sin favoritos" emptyDescription="Marca tus anime favoritos." />)
-    expect(screen.getByRole('alert')).toHaveTextContent('No se pudieron cargar los favoritos.')
+    rerender(<FavoriteListPanel eyebrow="Favorites" title="Featured anime" favorites={[]} isError emptyTitle="No favorites" emptyDescription="Mark your favorite anime." />)
+    expect(screen.getByRole('alert')).toHaveTextContent("We couldn't load favorites.")
   })
 
   it('renders favorite anime rows', () => {
-    renderWithProviders(<FavoriteListPanel eyebrow="Favoritos" title="Anime destacados" favorites={[favorite]} emptyTitle="Sin favoritos" emptyDescription="Marca tus anime favoritos." />)
+    renderWithProviders(<FavoriteListPanel eyebrow="Favorites" title="Featured anime" favorites={[favorite]} emptyTitle="No favorites" emptyDescription="Mark your favorite anime." />)
 
     expect(screen.getByText('Kimi no Na wa.')).toBeInTheDocument()
     expect(screen.getByText('Your Name.')).toBeInTheDocument()

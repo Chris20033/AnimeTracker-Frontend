@@ -14,7 +14,7 @@ export function HomeAnimeCard({ anime }: HomeAnimeCardProps) {
   return (
     <Link to={`/anime/${anime.source}/${anime.externalId}`} className="group grid overflow-hidden rounded-[var(--radius-lg)] border border-[var(--line)] bg-[var(--surface)] shadow-[0_18px_48px_var(--shadow)] outline-none transition hover:-translate-y-1 focus:ring-4 focus:ring-[var(--focus)]">
       <div className="aspect-[3/4] bg-[var(--surface-inset)]">
-        {anime.imageUrl ? <img src={anime.imageUrl} alt={anime.title} className="size-full object-cover transition duration-300 group-hover:scale-105" /> : <div className="grid size-full place-items-center text-sm font-black text-[var(--soft)]">Sin imagen</div>}
+        {anime.imageUrl ? <img src={anime.imageUrl} alt={anime.title} className="size-full object-cover transition duration-300 group-hover:scale-105" /> : <div className="grid size-full place-items-center text-sm font-black text-[var(--soft)]">No image</div>}
       </div>
       <div className="grid gap-2 p-3 sm:p-4">
         <h3 className="line-clamp-2 min-h-10 text-sm font-black leading-5 text-[var(--page-fg)] sm:min-h-12 sm:text-base sm:leading-6">{anime.title}</h3>

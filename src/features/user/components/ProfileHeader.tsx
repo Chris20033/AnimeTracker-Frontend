@@ -14,7 +14,7 @@ export function ProfileHeader({ username, avatarUrl, bannerUrl, bio, eyebrow, me
     <section className="ledger-panel overflow-hidden p-3 sm:p-4">
       <div className="relative min-h-40 overflow-hidden rounded-[var(--radius-lg)] bg-[var(--surface-inset)] sm:min-h-56">
         {bannerUrl ? (
-          <img src={bannerUrl} alt="Banner del perfil" className="absolute inset-0 size-full object-cover" />
+          <img src={bannerUrl} alt="Profile banner" className="absolute inset-0 size-full object-cover" />
         ) : (
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,var(--accent-soft),transparent_16rem),radial-gradient(circle_at_82%_18%,var(--cyan-soft),transparent_18rem),linear-gradient(135deg,var(--surface-inset),var(--surface-strong))]" />
         )}
@@ -25,7 +25,7 @@ export function ProfileHeader({ username, avatarUrl, bannerUrl, bio, eyebrow, me
         <div className="rounded-[var(--radius-lg)] border border-[var(--line)] bg-[var(--surface-strong)] p-4 shadow-[0_18px_48px_var(--shadow)] sm:p-5">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
             <div className="grid size-24 shrink-0 place-items-center overflow-hidden rounded-[1.35rem] border-4 border-[var(--surface-strong)] bg-[var(--accent)] text-3xl font-black text-[var(--action-ink)] shadow-[0_16px_34px_var(--shadow)] sm:size-32 sm:text-4xl">
-              {avatarUrl ? <img src={avatarUrl} alt={`Avatar de ${username}`} className="size-full object-cover" /> : initial}
+              {avatarUrl ? <img src={avatarUrl} alt={`${username} avatar`} className="size-full object-cover" /> : initial}
             </div>
 
             <div className="min-w-0 pb-1">
@@ -36,7 +36,7 @@ export function ProfileHeader({ username, avatarUrl, bannerUrl, bio, eyebrow, me
           </div>
 
           <p className="mt-5 max-w-3xl text-base font-semibold leading-8 text-[var(--muted)]">
-            {bio?.trim() || 'Este perfil todavia no tiene biografia.'}
+            {bio?.trim() || 'This profile does not have a bio yet.'}
           </p>
         </div>
       </div>

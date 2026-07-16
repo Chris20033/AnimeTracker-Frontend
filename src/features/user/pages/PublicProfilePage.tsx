@@ -25,11 +25,11 @@ export function PublicProfilePage() {
     return (
       <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="ledger-panel p-6 text-center sm:p-8">
-          <p className="ledger-kicker">Perfil publico</p>
-          <h1 className="mt-3 text-3xl ledger-title">{isNotFound ? 'Perfil no encontrado' : 'No se pudo cargar el perfil'}</h1>
-          <p className="mt-3 text-[var(--muted)]">{isNotFound ? 'Revisa el username o pide un enlace actualizado.' : 'Intenta de nuevo en unos segundos.'}</p>
+          <p className="ledger-kicker">Public profile</p>
+          <h1 className="mt-3 text-3xl ledger-title">{isNotFound ? 'Profile not found' : "We couldn't load the profile"}</h1>
+          <p className="mt-3 text-[var(--muted)]">{isNotFound ? 'Check the username or ask for an updated link.' : 'Try again in a few seconds.'}</p>
           <Link to="/" className="ledger-link mt-5 inline-flex min-h-11 items-center px-4">
-            Volver al inicio
+            Back to home
           </Link>
         </div>
       </section>
@@ -40,15 +40,15 @@ export function PublicProfilePage() {
 
   return (
     <section className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:px-8">
-      <ProfileHeader username={profile.username} avatarUrl={profile.avatarUrl} bannerUrl={profile.bannerUrl} bio={profile.bio} eyebrow="Perfil publico" />
+      <ProfileHeader username={profile.username} avatarUrl={profile.avatarUrl} bannerUrl={profile.bannerUrl} bio={profile.bio} eyebrow="Public profile" />
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(24rem,0.68fr)] lg:items-stretch">
         <FavoriteListPanel
-          eyebrow="Favoritos"
-          title="Anime destacados"
+          eyebrow="Favorites"
+          title="Featured anime"
           favorites={profile.favorites}
-          emptyTitle="Sin favoritos publicos todavia"
-          emptyDescription="Cuando este usuario marque anime favoritos, apareceran aqui como su vitrina publica."
+          emptyTitle="No public favorites yet"
+          emptyDescription="When this user marks favorite anime, they will appear here as a public showcase."
           action={null}
           panelClassName="ledger-panel overflow-hidden p-5 sm:p-7 lg:flex lg:h-full lg:min-h-0 lg:flex-col"
           listClassName="mt-5 max-h-none space-y-2 overflow-visible lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:pr-1"
@@ -90,9 +90,9 @@ function PublicStatisticsPanel({ profileStatistics, statistics, isLoading, isErr
   if (isError) {
     return (
       <section className="ledger-panel p-5 sm:p-7">
-        <p className="ledger-kicker">Estadisticas</p>
-        <h2 className="mt-2 text-2xl ledger-title">Actividad visible</h2>
-        <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">No se pudieron cargar las estadisticas completas.</p>
+        <p className="ledger-kicker">Stats</p>
+        <h2 className="mt-2 text-2xl ledger-title">Visible activity</h2>
+        <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">We couldn't load the full stats.</p>
         <div className="mt-5">
           <StatisticsCards variant="compact" totalAnime={summary.totalAnime} completedAnime={summary.completedAnime} totalEpisodesWatched={summary.totalEpisodesWatched} averageScore={summary.averageScore} />
         </div>

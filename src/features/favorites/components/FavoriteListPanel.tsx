@@ -27,22 +27,22 @@ export function FavoriteListPanel({ title, eyebrow, favorites, isLoading = false
           <p className="ledger-kicker">{eyebrow}</p>
           <h2 className="mt-2 text-2xl ledger-title">{title}</h2>
         </div>
-        <span className="ledger-chip">{favorites.length} favoritos</span>
+        <span className="ledger-chip">{favorites.length} favorites</span>
       </div>
 
       {isLoading ? <FavoriteListSkeleton /> : null}
-      {isError ? <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">No se pudieron cargar los favoritos.</p> : null}
+      {isError ? <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">We couldn't load favorites.</p> : null}
 
       {!isLoading && !isError && favorites.length === 0 ? (
         <div className="mt-5 rounded-[var(--radius-lg)] border border-dashed border-[var(--line-strong)] bg-[var(--surface-inset)] p-6 text-center">
           <p className="text-lg font-black text-[var(--page-fg)]">{emptyTitle}</p>
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--muted)]">{emptyDescription}</p>
-          {action === undefined ? <Link to="/anime" className="ledger-link mt-4 inline-flex min-h-11 items-center px-4">Explorar catalogo</Link> : action}
+          {action === undefined ? <Link to="/anime" className="ledger-link mt-4 inline-flex min-h-11 items-center px-4">Explore catalog</Link> : action}
         </div>
       ) : null}
 
       {favorites.length > 0 ? (
-        <div className={favoritesListClassName} aria-label="Lista de favoritos">
+        <div className={favoritesListClassName} aria-label="Favorites list">
           {favorites.map((favorite) => <FavoriteAnimeCard key={favorite.id} favorite={favorite} />)}
         </div>
       ) : null}

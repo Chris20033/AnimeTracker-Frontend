@@ -20,12 +20,12 @@ export function HomePage() {
   return (
     <section className="grid gap-7 py-5 sm:gap-8 sm:py-9 lg:py-12">
       <HomeHero anime={fallbackHero} />
-      <HomeCarousel eyebrow="Featured reel" title="Destacados de la semana" items={sections.featured} />
-      <HomeCarousel eyebrow="On air" title="En emision ahora" items={sections.topAiring} />
-      <HomeCarousel eyebrow="Seasonal shelf" title="Temporada actual" items={sections.seasonal} />
-      <HomeCarousel eyebrow="Next arc" title="Proximamente" items={sections.upcoming} />
-      <HomeCarousel eyebrow="Audience pulse" title="Populares" items={sections.popular} />
-      <HomeCarousel eyebrow="Community picks" title="Recomendaciones" items={sections.recommendations} variant="recommendation" />
+      <HomeCarousel eyebrow="Featured reel" title="Weekly highlights" items={sections.featured} />
+      <HomeCarousel eyebrow="On air" title="Airing now" items={sections.topAiring} />
+      <HomeCarousel eyebrow="Seasonal shelf" title="Current season" items={sections.seasonal} />
+      <HomeCarousel eyebrow="Next arc" title="Coming soon" items={sections.upcoming} />
+      <HomeCarousel eyebrow="Audience pulse" title="Popular picks" items={sections.popular} />
+      <HomeCarousel eyebrow="Community picks" title="Recommendations" items={sections.recommendations} variant="recommendation" />
     </section>
   )
 }

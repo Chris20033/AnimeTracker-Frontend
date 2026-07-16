@@ -14,7 +14,7 @@ interface ResponsiveCarouselProps<TItem> {
   countLabel?: string
 }
 
-export function ResponsiveCarousel<TItem>({ title, eyebrow, items, getKey, renderItem, visibleCount = 5, desktopAt = 'xl', desktopColumns = 5, mobileItemClassName = 'w-[min(72vw,15rem)] sm:w-64', countLabel = 'titulos' }: ResponsiveCarouselProps<TItem>) {
+export function ResponsiveCarousel<TItem>({ title, eyebrow, items, getKey, renderItem, visibleCount = 5, desktopAt = 'xl', desktopColumns = 5, mobileItemClassName = 'w-[min(72vw,15rem)] sm:w-64', countLabel = 'titles' }: ResponsiveCarouselProps<TItem>) {
   const titleId = useId()
   const [startIndex, setStartIndex] = useState(0)
   const maxStartIndex = Math.max(items.length - visibleCount, 0)
@@ -46,10 +46,10 @@ export function ResponsiveCarousel<TItem>({ title, eyebrow, items, getKey, rende
         <div className="flex items-center gap-2">
           <span className="ledger-chip">{items.length} {countLabel}</span>
           <div className={getControlsClassName(desktopAt)}>
-            <button type="button" onClick={goPrevious} disabled={startIndex === 0} aria-label={`Ver anteriores en ${title}`} className="grid size-10 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] font-black text-[var(--page-fg)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-40">
+            <button type="button" onClick={goPrevious} disabled={startIndex === 0} aria-label={`View previous in ${title}`} className="grid size-10 place-items-center rounded-full border border-[var(--line)] bg-[var(--surface)] font-black text-[var(--page-fg)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-40">
               ‹
             </button>
-            <button type="button" onClick={goNext} disabled={startIndex >= maxStartIndex} aria-label={`Ver siguientes en ${title}`} className="grid size-10 place-items-center rounded-full bg-[var(--accent)] font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:translate-y-0 disabled:bg-[var(--surface-inset)] disabled:text-[var(--soft)]">
+            <button type="button" onClick={goNext} disabled={startIndex >= maxStartIndex} aria-label={`View next in ${title}`} className="grid size-10 place-items-center rounded-full bg-[var(--accent)] font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:translate-y-0 disabled:bg-[var(--surface-inset)] disabled:text-[var(--soft)]">
               ›
             </button>
           </div>

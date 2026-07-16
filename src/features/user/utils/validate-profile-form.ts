@@ -15,11 +15,11 @@ function validateImageFile(file: File | undefined, label: string) {
   }
 
   if (!allowedImageTypes.includes(file.type)) {
-    return `${label} debe ser JPG, PNG o WebP.`
+    return `${label} must be JPG, PNG, or WebP.`
   }
 
   if (file.size > maxImageSize) {
-    return `${label} no puede superar 5 MB.`
+    return `${label} cannot exceed 5 MB.`
   }
 
   return undefined
@@ -29,15 +29,15 @@ export function validateProfileForm(username: string, bio: string, avatar: File 
   const errors: ProfileFormErrors = {}
 
   if (!username.trim()) {
-    errors.username = 'El username es obligatorio.'
+    errors.username = 'Username is required.'
   }
 
   if (username.trim().length < 3) {
-    errors.username = 'El username debe tener al menos 3 caracteres.'
+    errors.username = 'Username must be at least 3 characters.'
   }
 
-  const avatarError = validateImageFile(avatar, 'El avatar')
-  const bannerError = validateImageFile(banner, 'El banner')
+  const avatarError = validateImageFile(avatar, 'Avatar')
+  const bannerError = validateImageFile(banner, 'Banner')
 
   if (avatarError) {
     errors.avatar = avatarError
@@ -48,7 +48,7 @@ export function validateProfileForm(username: string, bio: string, avatar: File 
   }
 
   if (bio.length > 500) {
-    errors.bio = 'La biografia no puede superar 500 caracteres.'
+    errors.bio = 'Bio cannot exceed 500 characters.'
   }
 
   return errors

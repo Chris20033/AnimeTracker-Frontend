@@ -12,10 +12,10 @@ export function HomeHero({ anime }: HomeHeroProps) {
     return (
       <section className="ledger-panel p-6 sm:p-8 lg:p-10">
         <p className="ledger-kicker">AnimeTracker broadcast</p>
-        <h1 className="mt-3 max-w-4xl text-4xl ledger-title sm:text-6xl lg:text-7xl">Tu siguiente anime empieza aqui.</h1>
-        <p className="ledger-copy mt-5 text-lg">La cartelera se esta preparando. Explora el catalogo mientras cargan las recomendaciones.</p>
+        <h1 className="mt-3 max-w-4xl text-4xl ledger-title sm:text-6xl lg:text-7xl">Your next anime starts here.</h1>
+        <p className="ledger-copy mt-5 text-lg">The lineup is getting ready. Explore the catalog while recommendations load.</p>
         <Link to="/anime" className="mt-7 inline-flex min-h-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">
-          Explorar catalogo
+          Explore catalog
         </Link>
       </section>
     )
@@ -40,18 +40,18 @@ export function HomeHero({ anime }: HomeHeroProps) {
 
           <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[0.94] tracking-[-0.06em] text-[var(--page-fg)] sm:mt-6 sm:text-6xl sm:leading-[0.9] sm:tracking-[-0.07em] lg:text-7xl">{anime.title}</h1>
           <p className="mt-4 line-clamp-6 max-w-3xl text-sm font-semibold leading-7 text-[var(--muted)] sm:mt-5 sm:line-clamp-none sm:text-lg sm:leading-8">
-            {anime.synopsis ?? 'Un anime destacado para abrir tu siguiente sesion.'}
+            {anime.synopsis ?? 'A featured anime to open your next session.'}
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {typeLabel ? <span className="ledger-chip">{typeLabel}</span> : null}
             {anime.year ? <span className="ledger-chip">{anime.year}</span> : null}
-            {anime.episodes ? <span className="ledger-chip">{anime.episodes} episodios</span> : null}
+            {anime.episodes ? <span className="ledger-chip">{anime.episodes} episodes</span> : null}
             {statusLabel ? <span className="ledger-chip">{statusLabel}</span> : null}
           </div>
 
           {anime.genres.length > 0 ? (
-            <div className="mt-4 flex flex-wrap gap-2" aria-label="Generos destacados">
+            <div className="mt-4 flex flex-wrap gap-2" aria-label="Featured genres">
               {anime.genres.slice(0, 4).map((genre) => (
                 <span key={genre} className="rounded-full bg-[var(--accent-soft)] px-3 py-1 text-sm font-black text-[var(--accent-strong)]">{genre}</span>
               ))}
@@ -60,15 +60,15 @@ export function HomeHero({ anime }: HomeHeroProps) {
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
             <Link to={`/anime/${anime.source}/${anime.externalId}`} className="broadcast-action">
-              Ver detalle
+              View details
             </Link>
             {anime.trailerUrl ? (
               <a href={anime.trailerUrl} target="_blank" rel="noreferrer" className="broadcast-secondary-action">
-                Ver trailer
+                Watch trailer
               </a>
             ) : (
               <Link to="/anime" className="broadcast-secondary-action">
-                Explorar catalogo
+                Explore catalog
               </Link>
             )}
           </div>

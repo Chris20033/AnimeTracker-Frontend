@@ -9,20 +9,20 @@ describe('anime states', () => {
     const onRetry = vi.fn()
 
     render(<EmptyAnimeState />)
-    expect(screen.getByText('No encontramos anime con esos filtros')).toBeInTheDocument()
+    expect(screen.getByText("We couldn't find anime with those filters")).toBeInTheDocument()
 
     render(<AnimeErrorState onRetry={onRetry} />)
-    expect(screen.getByRole('alert')).toHaveTextContent('No se pudo cargar el catalogo.')
-    expect(screen.getByRole('button', { name: 'Reintentar' })).toBeInTheDocument()
+    expect(screen.getByRole('alert')).toHaveTextContent("We couldn't load the catalog.")
+    expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument()
 
     render(<AnimeResultSkeleton />)
-    expect(screen.getByText('No encontramos anime con esos filtros')).toBeInTheDocument()
+    expect(screen.getByText("We couldn't find anime with those filters")).toBeInTheDocument()
   })
 
   it('renders detail error and skeleton states', () => {
     renderWithProviders(<AnimeDetailError notFound />)
-    expect(screen.getByText('Anime no encontrado')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Volver al catalogo' })).toHaveAttribute('href', '/anime')
+    expect(screen.getByText('Anime not found')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Back to catalog' })).toHaveAttribute('href', '/anime')
 
     render(<AnimeDetailSkeleton />)
     expect(document.querySelector('[aria-busy="true"]')).toBeInTheDocument()

@@ -29,7 +29,7 @@ export function AddToLibraryPanel({ anime }: AddToLibraryPanelProps) {
         externalId: anime.externalId,
         status,
       })
-      setMessage('Anime agregado a tu biblioteca.')
+      setMessage('Anime added to your library.')
     } catch (mutationError) {
       setError(getAddLibraryErrorMessage(mutationError))
     }
@@ -38,11 +38,11 @@ export function AddToLibraryPanel({ anime }: AddToLibraryPanelProps) {
   if (!isAuthenticated) {
     return (
       <section className="ledger-panel p-5 sm:p-6">
-        <p className="ledger-kicker">Biblioteca</p>
-        <h2 className="mt-2 text-2xl ledger-title">Guarda tu progreso</h2>
-        <p className="mt-3 text-sm font-semibold leading-7 text-[var(--muted)]">Inicia sesion para agregar este anime a tu biblioteca, seguir episodios y guardar notas privadas.</p>
+        <p className="ledger-kicker">Library</p>
+        <h2 className="mt-2 text-2xl ledger-title">Save your progress</h2>
+        <p className="mt-3 text-sm font-semibold leading-7 text-[var(--muted)]">Sign in to add this anime to your library, track episodes, and save private notes.</p>
         <Link to="/login" className="mt-5 inline-flex min-h-11 items-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-2.5 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">
-          Iniciar sesion
+          Sign in
         </Link>
       </section>
     )
@@ -51,24 +51,24 @@ export function AddToLibraryPanel({ anime }: AddToLibraryPanelProps) {
   return (
     <form onSubmit={handleSubmit} className="ledger-panel grid gap-4 p-5 sm:p-6">
       <div>
-        <p className="ledger-kicker">Biblioteca</p>
-        <h2 className="mt-2 text-2xl ledger-title">Agregar a mi lista</h2>
-        <p className="mt-3 text-sm font-semibold leading-7 text-[var(--muted)]">Crea una entrada privada para actualizar estado, episodios, score personal y notas.</p>
+        <p className="ledger-kicker">Library</p>
+        <h2 className="mt-2 text-2xl ledger-title">Add to my list</h2>
+        <p className="mt-3 text-sm font-semibold leading-7 text-[var(--muted)]">Create a private entry to update status, episodes, personal score, and notes.</p>
       </div>
 
       <label className="grid gap-2 text-sm font-black text-[var(--page-fg)]">
-        Estado inicial
+        Initial status
         <select value={status} onChange={(event) => setStatus(event.target.value as LibraryStatus)} className="min-h-12 rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface-inset)] px-4 py-3 font-semibold text-[var(--page-fg)] outline-none focus:ring-4 focus:ring-[var(--focus)]">
           {libraryStatusOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
         </select>
-        <span className="text-xs font-semibold text-[var(--soft)]">Si eliges Completado, se marcaran todos los episodios conocidos.</span>
+        <span className="text-xs font-semibold text-[var(--soft)]">If you choose Completed, all known episodes will be marked.</span>
       </label>
 
       {error ? <p role="alert" className="state-error px-4 py-3 text-sm font-semibold">{error}</p> : null}
       {message ? <p role="status" className="state-success px-4 py-3 text-sm font-semibold">{message}</p> : null}
 
       <button type="submit" disabled={addEntry.isPending} className="min-h-12 rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60">
-        {addEntry.isPending ? 'Agregando...' : 'Agregar a biblioteca'}
+        {addEntry.isPending ? 'Adding...' : 'Add to library'}
       </button>
     </form>
   )
@@ -79,17 +79,17 @@ function getAddLibraryErrorMessage(error: unknown) {
     const code = error.response?.data?.error?.code
 
     if (code === 'ANIME_ALREADY_IN_LIBRARY') {
-      return 'Este anime ya esta en tu biblioteca.'
+      return 'This anime is already in your library.'
     }
 
     if (code === 'EXTERNAL_ANIME_API_ERROR') {
-      return 'No se pudo consultar Kitsu para guardar este anime. Intenta de nuevo.'
+      return "We couldn't reach Kitsu to save this anime. Try again."
     }
 
     if (code === 'VALIDATION_ERROR') {
-      return 'No se pudo agregar. Revisa el estado seleccionado e intenta de nuevo.'
+      return "We couldn't add it. Check the selected status and try again."
     }
   }
 
-  return 'No se pudo agregar este anime a tu biblioteca.'
+  return "We couldn't add this anime to your library."
 }
