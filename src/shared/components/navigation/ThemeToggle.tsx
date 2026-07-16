@@ -14,7 +14,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       aria-pressed={isDark}
       onClick={toggleTheme}
       className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-2.5 py-1.5 text-sm font-black text-[var(--muted)] shadow-[0_14px_32px_var(--shadow)] outline-none transition hover:bg-[var(--surface-strong)] hover:text-[var(--page-fg)] focus:ring-4 focus:ring-[var(--focus)] sm:min-h-11 sm:px-3 sm:py-2"
@@ -24,7 +24,7 @@ export function ThemeToggle() {
           <use href={`/icons.svg#${iconId}`} />
         </svg>
       </span>
-      <span className="hidden sm:inline">{isDark ? 'Claro' : 'Oscuro'}</span>
+      <span className="hidden sm:inline">{isDark ? 'Light' : 'Dark'}</span>
     </button>
   )
 }
