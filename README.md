@@ -11,8 +11,8 @@ AnimeTracker es una aplicacion web para descubrir anime, organizar una bibliotec
 ## Demo
 
 - Demo publica: https://anime-tracker-lime.vercel.app/
-- API/backend: https://animetracker-backend-ox7l.onrender.com/api
-- Documentacion Swagger: https://animetracker-backend-ox7l.onrender.com/api/docs
+- API/backend: VM en la nube expuesta mediante ngrok
+- Documentacion Swagger: `/api/docs` en la URL publica del backend
 - Repositorio backend: https://github.com/Chris20033/AnimeTracker-Backend
 - Repositorio documentacion: https://github.com/Chris20033/AnimeTracker-Docs
 
@@ -73,13 +73,17 @@ Crea un archivo `.env` a partir de `.env.example`:
 
 ```env
 VITE_API_URL=http://localhost:3000/api
+VITE_USE_NGROK=false
 ```
 
-Para produccion, `VITE_API_URL` debe apuntar a la URL publica del backend, por ejemplo:
+Para produccion, `VITE_API_URL` debe apuntar a la URL publica del backend. Actualmente el backend se ejecuta en una VM en la nube y se expone mediante ngrok:
 
 ```env
-VITE_API_URL=https://animetracker-backend-ox7l.onrender.com/api
+VITE_API_URL=https://tu-url-ngrok.ngrok-free.app/api
+VITE_USE_NGROK=true
 ```
+
+`VITE_USE_NGROK=true` agrega el header `ngrok-skip-browser-warning: true` a las peticiones Axios. Esto evita la pagina intermedia de advertencia de ngrok en los tuneles gratuitos. Si el backend se mueve a un dominio propio, Render, Railway, Cloudflare Tunnel u otra URL sin advertencia de ngrok, esta variable debe quedar en `false`.
 
 ## Instalacion Local
 
@@ -133,13 +137,13 @@ npm run build
 
 ## Deploy
 
-El frontend esta desplegado en Vercel y consume el backend desplegado en Render.
+El frontend esta desplegado en Vercel y consume un backend ejecutado en una VM en la nube, expuesto publicamente mediante ngrok.
 
 URLs de produccion:
 
 - Frontend: https://anime-tracker-lime.vercel.app/
-- Backend API: https://animetracker-backend-ox7l.onrender.com/api
-- Swagger: https://animetracker-backend-ox7l.onrender.com/api/docs
+- Backend API: URL publica de ngrok configurada en `VITE_API_URL`
+- Swagger: `VITE_API_URL` reemplazando `/api` por `/api/docs`
 
 Para desplegar el frontend en otro entorno, configura `VITE_API_URL` con la URL publica del backend antes de generar el build.
 
@@ -159,7 +163,7 @@ Sugerencia de secciones para capturas:
 
 ## Estado del Proyecto
 
-MVP frontend completado, desplegado en Vercel e integrado con backend desplegado en Render.
+MVP frontend completado, desplegado en Vercel e integrado con backend ejecutado en una VM en la nube mediante ngrok.
 
 - UI principal implementada.
 - Integracion con API preparada mediante `VITE_API_URL`.
