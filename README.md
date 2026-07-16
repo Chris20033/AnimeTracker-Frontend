@@ -76,14 +76,32 @@ VITE_API_URL=http://localhost:3000/api
 VITE_USE_NGROK=false
 ```
 
-Para produccion, `VITE_API_URL` debe apuntar a la URL publica del backend. Actualmente el backend se ejecuta en una VM en la nube y se expone mediante ngrok:
+Para produccion, `VITE_API_URL` debe apuntar a la URL publica del backend:
 
 ```env
-VITE_API_URL=https://tu-url-ngrok.ngrok-free.app/api
+VITE_API_URL=https://tu-backend-publico.com/api
+VITE_USE_NGROK=false
+```
+
+## Uso de ngrok (Opcional)
+
+Si expones el backend mediante ngrok, activa esta variable de entorno:
+
+```env
 VITE_USE_NGROK=true
 ```
 
-`VITE_USE_NGROK=true` agrega el header `ngrok-skip-browser-warning: true` a las peticiones Axios. Esto evita la pagina intermedia de advertencia de ngrok en los tuneles gratuitos. Si el backend se mueve a un dominio propio, Render, Railway, Cloudflare Tunnel u otra URL sin advertencia de ngrok, esta variable debe quedar en `false`.
+Esto agrega el header requerido para evitar la pagina intermedia de advertencia de ngrok:
+
+```http
+ngrok-skip-browser-warning: true
+```
+
+Si usas backend local, Render, Railway, un dominio propio o cualquier despliegue sin ngrok, mantenlo en:
+
+```env
+VITE_USE_NGROK=false
+```
 
 ## Instalacion Local
 
