@@ -49,9 +49,9 @@ export function AnimeSearchPage() {
         <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_70%_35%,var(--accent-soft),transparent_18rem)] lg:block" />
         <div className="relative max-w-3xl">
           <p className="ledger-kicker">Anime catalog</p>
-          <h1 className="mt-3 text-4xl ledger-title sm:text-5xl lg:text-6xl">{query ? `Resultados para ${query}` : 'Explora el catalogo de anime'}</h1>
+          <h1 className="mt-3 text-4xl ledger-title sm:text-5xl lg:text-6xl">{query ? `Results for ${query}` : 'Explore the anime catalog'}</h1>
           <p className="ledger-copy mt-4 text-base sm:text-lg">
-            Descubre anime con busqueda y filtros personalizados.
+            Discover anime with search and personalized filters.
           </p>
         </div>
 
@@ -67,10 +67,10 @@ export function AnimeSearchPage() {
 
       <div ref={resultsHeaderRef} className="scroll-mt-24 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="ledger-kicker">Catalogo</p>
-          <h2 className="mt-2 text-2xl ledger-title">{activeFilterCount > 0 ? `${activeFilterCount} filtros activos` : 'Todos los titulos'}</h2>
+          <p className="ledger-kicker">Catalog</p>
+          <h2 className="mt-2 text-2xl ledger-title">{activeFilterCount > 0 ? `${activeFilterCount} active filters` : 'All titles'}</h2>
         </div>
-        {pagination ? <p className="ledger-chip">Pagina {pagination.page} de {pagination.totalPages || 1}</p> : null}
+        {pagination ? <p className="ledger-chip">Page {pagination.page} of {pagination.totalPages || 1}</p> : null}
       </div>
 
       {catalogQuery.isLoading ? <AnimeResultSkeleton /> : null}

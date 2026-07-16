@@ -9,10 +9,10 @@ export function AnimeDetailError({ notFound }: AnimeDetailErrorProps) {
     <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
       <div role={notFound ? undefined : 'alert'} className="screen-state p-6 text-center sm:p-8">
         <p className="ledger-kicker">Anime detail</p>
-        <h1 className="mt-3 text-3xl ledger-title">{notFound ? 'Anime no encontrado' : 'No se pudo cargar el detalle'}</h1>
-        <p className="mt-3 text-[var(--muted)]">{notFound ? 'El proveedor no encontro ese anime.' : 'La API externa no respondio correctamente. Intenta de nuevo.'}</p>
+        <h1 className="mt-3 text-3xl ledger-title">{notFound ? 'Anime not found' : "We couldn't load the details"}</h1>
+        <p className="mt-3 text-[var(--muted)]">{notFound ? "The provider couldn't find that anime." : 'The external API did not respond correctly. Try again.'}</p>
         <Link to="/anime" className="ledger-link mt-5 inline-flex min-h-11 items-center px-4">
-          Volver al catalogo
+          Back to catalog
         </Link>
       </div>
     </section>

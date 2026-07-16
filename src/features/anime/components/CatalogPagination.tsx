@@ -10,15 +10,15 @@ export function CatalogPagination({ page, totalPages, total, onPageChange }: Cat
   const pages = getVisiblePages(page, safeTotalPages)
 
   return (
-    <nav className="ledger-surface flex flex-wrap items-center justify-between gap-3 p-3 sm:p-4" aria-label="Paginacion del catalogo">
-      <p className="w-full text-sm font-bold text-[var(--muted)] sm:w-auto">{total} resultados encontrados</p>
+    <nav className="ledger-surface flex flex-wrap items-center justify-between gap-3 p-3 sm:p-4" aria-label="Catalog pagination">
+      <p className="w-full text-sm font-bold text-[var(--muted)] sm:w-auto">{total} results found</p>
 
       <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-end">
         <button type="button" disabled={page <= 1} onClick={() => onPageChange(page - 1)} className="min-h-11 rounded-[var(--radius-md)] border border-[var(--line)] px-4 py-2 font-black text-[var(--page-fg)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:opacity-50">
-        Anterior
+        Previous
         </button>
 
-        <div className="flex flex-wrap items-center gap-1" aria-label={`Pagina ${page} de ${safeTotalPages}`}>
+        <div className="flex flex-wrap items-center gap-1" aria-label={`Page ${page} of ${safeTotalPages}`}>
           {pages.map((pageItem, index) =>
             pageItem === 'ellipsis' ? (
               <span key={`ellipsis-${index}`} className="grid min-h-11 min-w-10 place-items-center px-1 text-sm font-black text-[var(--soft)]" aria-hidden="true">
@@ -43,7 +43,7 @@ export function CatalogPagination({ page, totalPages, total, onPageChange }: Cat
         </div>
 
         <button type="button" disabled={totalPages === 0 || page >= totalPages} onClick={() => onPageChange(page + 1)} className="min-h-11 rounded-[var(--radius-md)] bg-[var(--accent)] px-4 py-2 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)] disabled:cursor-not-allowed disabled:translate-y-0 disabled:bg-[var(--surface-inset)] disabled:text-[var(--soft)]">
-        Siguiente
+        Next
         </button>
       </div>
     </nav>

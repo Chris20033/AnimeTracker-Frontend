@@ -10,9 +10,11 @@ AnimeTracker es una aplicacion web para descubrir anime, organizar una bibliotec
 
 ## Demo
 
-- Demo publica: pendiente
-- API/backend: pendiente
-- Repositorio backend: pendiente
+- Demo publica: https://anime-tracker-lime.vercel.app/
+- API/backend: https://animetracker-backend-ox7l.onrender.com/api
+- Documentacion Swagger: https://animetracker-backend-ox7l.onrender.com/api/docs
+- Repositorio backend: https://github.com/Chris20033/AnimeTracker-Backend
+- Repositorio documentacion: https://github.com/Chris20033/AnimeTracker-Docs
 
 ## Descripcion
 
@@ -76,7 +78,7 @@ VITE_API_URL=http://localhost:3000/api
 Para produccion, `VITE_API_URL` debe apuntar a la URL publica del backend, por ejemplo:
 
 ```env
-VITE_API_URL=https://tu-api.com/api
+VITE_API_URL=https://animetracker-backend-ox7l.onrender.com/api
 ```
 
 ## Instalacion Local
@@ -131,13 +133,15 @@ npm run build
 
 ## Deploy
 
-El frontend esta preparado para desplegarse en Vercel u otra plataforma compatible con aplicaciones Vite.
+El frontend esta desplegado en Vercel y consume el backend desplegado en Render.
 
-Pendiente antes del deploy publico:
+URLs de produccion:
 
-- Configurar `VITE_API_URL` con la URL real del backend.
-- Validar rutas publicas y privadas en produccion.
-- Agregar el enlace de demo en este README.
+- Frontend: https://anime-tracker-lime.vercel.app/
+- Backend API: https://animetracker-backend-ox7l.onrender.com/api
+- Swagger: https://animetracker-backend-ox7l.onrender.com/api/docs
+
+Para desplegar el frontend en otro entorno, configura `VITE_API_URL` con la URL publica del backend antes de generar el build.
 
 ## Capturas
 
@@ -155,25 +159,24 @@ Sugerencia de secciones para capturas:
 
 ## Estado del Proyecto
 
-MVP frontend completado y validado localmente.
+MVP frontend completado, desplegado en Vercel e integrado con backend desplegado en Render.
 
 - UI principal implementada.
 - Integracion con API preparada mediante `VITE_API_URL`.
 - Suite minima de tests configurada.
 - Build de produccion funcional.
-- Deploy publico pendiente.
+- Deploy publico disponible.
 
 ## Proximos Pasos
 
-- Desplegar backend y base de datos.
-- Desplegar frontend en Vercel.
 - Configurar CI/CD con GitHub Actions.
 - Agregar screenshots finales.
-- Actualizar enlaces reales de demo y API.
+- Revisar performance y accesibilidad con Lighthouse.
+- Monitorear errores y comportamiento en produccion.
 
 ## Autor
 
-Desarrollado como proyecto full stack de portafolio.
+Desarrollado por Christian Ivan Escamilla Marquez como proyecto full stack de portafolio.
 
-- GitHub: pendiente
-- LinkedIn: pendiente
+- GitHub: https://github.com/Chris20033
+- LinkedIn: https://www.linkedin.com/in/christian-escamilla-marquez/

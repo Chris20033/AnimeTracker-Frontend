@@ -8,11 +8,11 @@ export function validateResetPasswordForm(password: string, confirmPassword: str
   const errors: ResetPasswordFormErrors = {}
 
   if (password.length < 8) {
-    errors.password = 'La nueva contrasena debe tener al menos 8 caracteres.'
+    errors.password = 'New password must be at least 8 characters.'
   }
 
   if (confirmPassword !== password) {
-    errors.confirmPassword = 'Las contrasenas no coinciden.'
+    errors.confirmPassword = 'Passwords do not match.'
   }
 
   return errors

@@ -36,13 +36,13 @@ export function DashboardPage() {
         <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_70%_35%,var(--accent-soft),transparent_18rem)] lg:block" />
         <div className="relative max-w-4xl">
           <p className="ledger-kicker">Dashboard</p>
-          <h1 className="mt-3 text-4xl ledger-title sm:text-5xl lg:text-6xl">Tu centro de mando, {session?.user.username}</h1>
+          <h1 className="mt-3 text-4xl ledger-title sm:text-5xl lg:text-6xl">Your command center, {session?.user.username}</h1>
           <p className="ledger-copy mt-4 text-base sm:text-lg">
-            Revisa tu avance, detecta patrones de genero y retoma lo que estabas viendo sin perder el hilo.
+            Review your progress, spot genre patterns, and resume what you were watching without losing the thread.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link to="/library" className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">Abrir biblioteca</Link>
-            <Link to="/anime" className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-md)] border border-[var(--line)] px-5 py-3 font-black text-[var(--page-fg)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)]">Explorar anime</Link>
+            <Link to="/library" className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">Open library</Link>
+            <Link to="/anime" className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-md)] border border-[var(--line)] px-5 py-3 font-black text-[var(--page-fg)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)]">Explore anime</Link>
           </div>
         </div>
       </div>
@@ -67,10 +67,10 @@ export function DashboardPage() {
 function NewUserCallout() {
   return (
     <section className="ledger-panel border-dashed p-5 text-center sm:p-7">
-      <p className="ledger-kicker">Primer registro</p>
-      <h2 className="mt-2 text-2xl ledger-title">Tu dashboard esta listo para llenarse</h2>
-      <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">Agrega anime a tu biblioteca, marca favoritos y actualiza episodios para desbloquear estadisticas utiles.</p>
-      <Link to="/anime" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-2.5 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">Buscar primer anime</Link>
+      <p className="ledger-kicker">First entry</p>
+      <h2 className="mt-2 text-2xl ledger-title">Your dashboard is ready to fill up</h2>
+      <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">Add anime to your library, mark favorites, and update episodes to unlock useful stats.</p>
+      <Link to="/anime" className="mt-5 inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-2.5 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">Find first anime</Link>
     </section>
   )
 }
@@ -86,15 +86,15 @@ function WatchingPanel({ entries, isLoading, isError }: WatchingPanelProps) {
     <section className="ledger-panel p-5 sm:p-7">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-5">
         <div>
-          <p className="ledger-kicker">En progreso</p>
-          <h2 className="mt-2 text-2xl ledger-title">Continua tu temporada</h2>
+          <p className="ledger-kicker">In progress</p>
+          <h2 className="mt-2 text-2xl ledger-title">Continue your season</h2>
         </div>
-        <span className="ledger-chip">{entries.length} visibles</span>
+        <span className="ledger-chip">{entries.length} visible</span>
       </div>
 
       {isLoading ? <PanelSkeleton /> : null}
-      {isError ? <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">No se pudo cargar el anime en progreso.</p> : null}
-      {!isLoading && !isError && entries.length === 0 ? <PanelEmptyState title="No hay anime en progreso" description="Marca algun anime como Viendo desde tu biblioteca para retomarlo desde aqui." actionLabel="Ir a biblioteca" to="/library" /> : null}
+      {isError ? <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">We couldn't load anime in progress.</p> : null}
+      {!isLoading && !isError && entries.length === 0 ? <PanelEmptyState title="No anime in progress" description="Mark an anime as Watching from your library to resume it here." actionLabel="Go to library" to="/library" /> : null}
 
       {entries.length > 0 ? (
         <div className="mt-5 grid gap-3">
@@ -113,13 +113,13 @@ function WatchingEntryRow({ entry }: { entry: LibraryEntry }) {
     <Link to={`/anime/${entry.anime.source}/${entry.anime.externalId}`} className="ledger-inset grid grid-cols-[4rem_minmax(0,1fr)] gap-3 p-3 outline-none transition hover:-translate-y-0.5 hover:bg-[var(--surface)] focus:ring-4 focus:ring-[var(--focus)]">
       <div className="overflow-hidden rounded-[var(--radius-md)] bg-[var(--surface-inset)]">
         <div className="aspect-[3/4]">
-          {entry.anime.imageUrl ? <img src={entry.anime.imageUrl} alt={entry.anime.title} className="size-full object-cover" /> : <div className="grid size-full place-items-center text-xs font-black text-[var(--soft)]">Sin imagen</div>}
+          {entry.anime.imageUrl ? <img src={entry.anime.imageUrl} alt={entry.anime.title} className="size-full object-cover" /> : <div className="grid size-full place-items-center text-xs font-black text-[var(--soft)]">No image</div>}
         </div>
       </div>
       <div className="min-w-0 py-1">
         <p className="line-clamp-1 text-base font-black text-[var(--page-fg)]">{entry.anime.title}</p>
-        <p className="mt-1 text-xs font-semibold text-[var(--muted)]">{libraryStatusLabels[entry.status]} · {entry.episodesWatched} / {totalEpisodes ?? '??'} episodios</p>
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--surface)]" aria-label={`Progreso de ${entry.anime.title}: ${entry.episodesWatched} de ${totalEpisodes ?? 'episodios desconocidos'}`}>
+        <p className="mt-1 text-xs font-semibold text-[var(--muted)]">{libraryStatusLabels[entry.status]} · {entry.episodesWatched} / {totalEpisodes ?? '??'} episodes</p>
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--surface)]" aria-label={`Progress for ${entry.anime.title}: ${entry.episodesWatched} of ${totalEpisodes ?? 'unknown episodes'}`}>
           <div className="h-full rounded-full bg-[var(--accent)]" style={{ width: `${progress}%` }} />
         </div>
       </div>
@@ -138,15 +138,15 @@ function RecentFavoritesPanel({ favorites, isLoading, isError }: RecentFavorites
     <section className="ledger-panel p-5 sm:p-7">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-5">
         <div>
-          <p className="ledger-kicker">Favoritos</p>
-          <h2 className="mt-2 text-2xl ledger-title">Destacados recientes</h2>
+          <p className="ledger-kicker">Favorites</p>
+          <h2 className="mt-2 text-2xl ledger-title">Recent highlights</h2>
         </div>
-        <Link to="/profile" className="ledger-link inline-flex min-h-10 items-center px-3">Ver perfil</Link>
+        <Link to="/profile" className="ledger-link inline-flex min-h-10 items-center px-3">View profile</Link>
       </div>
 
       {isLoading ? <PanelSkeleton /> : null}
-      {isError ? <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">No se pudieron cargar favoritos recientes.</p> : null}
-      {!isLoading && !isError && favorites.length === 0 ? <PanelEmptyState title="Sin favoritos recientes" description="Marca estrellas desde detalle o biblioteca para crear tu vitrina personal." actionLabel="Explorar anime" to="/anime" /> : null}
+      {isError ? <p role="alert" className="state-error mt-5 px-4 py-3 text-sm font-semibold">We couldn't load recent favorites.</p> : null}
+      {!isLoading && !isError && favorites.length === 0 ? <PanelEmptyState title="No recent favorites" description="Mark stars from detail pages or your library to create your personal showcase." actionLabel="Explore anime" to="/anime" /> : null}
       {favorites.length > 0 ? <div className="mt-5 grid gap-2">{favorites.map((favorite) => <FavoriteAnimeCard key={favorite.id} favorite={favorite} />)}</div> : null}
     </section>
   )
@@ -187,9 +187,9 @@ function DashboardErrorState({ onRetry }: { onRetry: () => void }) {
   return (
     <section className="ledger-panel my-8 p-6 text-center sm:p-8">
       <p className="ledger-kicker">Dashboard</p>
-      <h1 className="mt-3 text-3xl ledger-title">No se pudieron cargar tus estadisticas</h1>
-      <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">Intenta de nuevo para reconstruir tu resumen de actividad.</p>
-      <button type="button" onClick={onRetry} className="mt-6 min-h-12 rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">Reintentar</button>
+      <h1 className="mt-3 text-3xl ledger-title">We couldn't load your stats</h1>
+      <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-7 text-[var(--muted)]">Try again to rebuild your activity summary.</p>
+      <button type="button" onClick={onRetry} className="mt-6 min-h-12 rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">Retry</button>
     </section>
   )
 }

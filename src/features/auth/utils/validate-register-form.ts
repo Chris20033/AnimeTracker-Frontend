@@ -11,15 +11,15 @@ export function validateRegisterForm(username: string, email: string, password: 
   const errors: RegisterFormErrors = {}
 
   if (username.trim().length < 3 || username.trim().length > 30) {
-    errors.username = 'El username debe tener entre 3 y 30 caracteres.'
+    errors.username = 'Username must be between 3 and 30 characters.'
   }
 
   if (!validateEmail(email)) {
-    errors.email = 'Ingresa un correo valido.'
+    errors.email = 'Enter a valid email address.'
   }
 
   if (password.length < 8) {
-    errors.password = 'La contrasena debe tener al menos 8 caracteres.'
+    errors.password = 'Password must be at least 8 characters.'
   }
 
   return errors

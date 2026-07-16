@@ -1,7 +1,7 @@
 export const ANIME_CATALOG_LIMIT = 24
 
 export const animeTypes = [
-  { value: '', label: 'Todos' },
+  { value: '', label: 'All' },
   { value: 'tv', label: 'TV' },
   { value: 'movie', label: 'Movie' },
   { value: 'ova', label: 'OVA' },
@@ -11,14 +11,14 @@ export const animeTypes = [
 ]
 
 export const animeStatuses = [
-  { value: '', label: 'Todos' },
-  { value: 'airing', label: 'En emision' },
-  { value: 'complete', label: 'Completados' },
-  { value: 'upcoming', label: 'Proximamente' },
+  { value: '', label: 'All' },
+  { value: 'airing', label: 'Airing' },
+  { value: 'complete', label: 'Completed' },
+  { value: 'upcoming', label: 'Upcoming' },
 ]
 
 export const animeRatings = [
-  { value: '', label: 'Todas' },
+  { value: '', label: 'All' },
   { value: 'g', label: 'G' },
   { value: 'pg', label: 'PG' },
   { value: 'pg13', label: 'PG-13' },
@@ -27,11 +27,11 @@ export const animeRatings = [
 ]
 
 export const orderOptions = [
-  { value: 'popularity', label: 'Popularidad' },
+  { value: 'popularity', label: 'Popularity' },
   { value: 'score', label: 'Score' },
   { value: 'rank', label: 'Ranking' },
-  { value: 'members', label: 'Miembros' },
-  { value: 'title', label: 'Titulo' },
+  { value: 'members', label: 'Members' },
+  { value: 'title', label: 'Title' },
 ]
 
 export interface CatalogFormState {

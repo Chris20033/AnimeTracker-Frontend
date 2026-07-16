@@ -64,7 +64,7 @@ function ShowPasswordButton({ isPasswordVisible, disabled, onToggle }: ShowPassw
   return (
     <button
       type="button"
-      aria-label={isPasswordVisible ? 'Ocultar contrasena' : 'Mostrar contrasena'}
+      aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
       aria-pressed={isPasswordVisible}
       disabled={disabled}
       onClick={onToggle}

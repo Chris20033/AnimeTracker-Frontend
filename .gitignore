@@ -9,6 +9,8 @@ lerna-debug.log*
 
 .agents
 .env
+.impeccable
+.opencode
 
 node_modules
 dist

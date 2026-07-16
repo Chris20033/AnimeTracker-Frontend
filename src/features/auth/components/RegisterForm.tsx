@@ -38,8 +38,8 @@ export function RegisterForm() {
     } catch (error) {
       setErrors({
         form: isAxiosError(error)
-          ? "El username o correo ya esta en uso."
-          : "No se pudo crear la cuenta.",
+          ? "That username or email is already in use."
+          : "We couldn't create the account.",
       });
     }
   }
@@ -48,11 +48,11 @@ export function RegisterForm() {
     <form onSubmit={handleSubmit} className="ledger-panel p-5 sm:p-7">
       <div className="mb-6 flex items-start justify-between gap-4 border-b border-[var(--line)] pb-5">
         <div>
-          <p className="ledger-kicker">Nueva cuenta</p>
-          <h2 className="mt-2 text-2xl ledger-title">Crear ledger personal</h2>
+          <p className="ledger-kicker">New account</p>
+          <h2 className="mt-2 text-2xl ledger-title">Create personal ledger</h2>
         </div>
         <p className="ledger-chip bg-[var(--accent-soft)] text-[var(--accent-strong)]">
-          Registro
+          Sign up
         </p>
       </div>
       <div className="grid gap-5">
@@ -66,7 +66,7 @@ export function RegisterForm() {
           onChange={(event) => setUsername(event.target.value)}
         />
         <TextField
-          label="Correo"
+          label="Email"
           name="email"
           type="email"
           autoComplete="email"
@@ -75,7 +75,7 @@ export function RegisterForm() {
           onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
-          label="Contraseña"
+          label="Password"
           name="password"
           type="password"
           autoComplete="new-password"
@@ -93,14 +93,14 @@ export function RegisterForm() {
         ) : null}
         <SubmitButton
           isLoading={registerMutation.isPending}
-          loadingLabel="Creando cuenta..."
+          loadingLabel="Creating account..."
         >
-          Crear cuenta
+          Create account
         </SubmitButton>
         <p className="text-center text-sm text-[var(--muted)]">
-          Ya tienes cuenta?{" "}
+          Already have an account?{" "}
           <Link to="/login" className="ledger-link">
-            Inicia sesion
+            Sign in
           </Link>
         </p>
       </div>

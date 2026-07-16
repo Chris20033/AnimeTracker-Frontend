@@ -37,8 +37,8 @@ export function LoginForm() {
     } catch (error) {
       setErrors({
         form: isAxiosError(error)
-          ? "Credenciales invalidas o usuario inactivo."
-          : "No se pudo iniciar sesion.",
+          ? "Invalid credentials or inactive user."
+          : "We couldn't sign you in.",
       });
     }
   }
@@ -47,8 +47,8 @@ export function LoginForm() {
     <form onSubmit={handleSubmit} className="ledger-panel p-5 sm:p-7">
       <div className="mb-6 flex items-start justify-between gap-4 border-b border-[var(--line)] pb-5">
         <div>
-          <p className="ledger-kicker">Acceso</p>
-          <h2 className="mt-2 text-2xl ledger-title">Continuar temporada</h2>
+          <p className="ledger-kicker">Access</p>
+          <h2 className="mt-2 text-2xl ledger-title">Continue season</h2>
         </div>
         <p className="ledger-chip bg-[var(--accent-soft)] text-[var(--accent-strong)]">
           Login
@@ -56,7 +56,7 @@ export function LoginForm() {
       </div>
       <div className="grid gap-5">
         <TextField
-          label="Correo"
+          label="Email"
           name="email"
           type="email"
           autoComplete="email"
@@ -65,7 +65,7 @@ export function LoginForm() {
           onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
-          label="Contraseña"
+          label="Password"
           name="password"
           type="password"
           autoComplete="current-password"
@@ -75,7 +75,7 @@ export function LoginForm() {
         />
         <div className="-mt-2 text-right">
           <Link to="/forgot-password" className="ledger-link text-sm">
-            Olvide mi contrasena
+            Forgot password
           </Link>
         </div>
         {errors.form ? (
@@ -88,14 +88,14 @@ export function LoginForm() {
         ) : null}
         <SubmitButton
           isLoading={loginMutation.isPending}
-          loadingLabel="Entrando..."
+          loadingLabel="Signing in..."
         >
-          Iniciar sesión
+          Sign in
         </SubmitButton>
         <p className="text-center text-sm text-[var(--muted)]">
-          Aun no tienes cuenta?{" "}
+          Don't have an account yet?{" "}
           <Link to="/registro" className="ledger-link">
-            Registrate
+            Create one
           </Link>
         </p>
       </div>

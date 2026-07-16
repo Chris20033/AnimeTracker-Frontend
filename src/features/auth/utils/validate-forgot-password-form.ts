@@ -9,7 +9,7 @@ export function validateForgotPasswordForm(email: string): ForgotPasswordFormErr
   const errors: ForgotPasswordFormErrors = {}
 
   if (!validateEmail(email)) {
-    errors.email = 'Ingresa un correo valido.'
+    errors.email = 'Enter a valid email address.'
   }
 
   return errors

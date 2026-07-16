@@ -29,19 +29,19 @@ export function validateLibraryEntryForm(entry: LibraryEntry, formState: Library
   const personalScore = formState.personalScore === '' ? null : Number(formState.personalScore)
 
   if (!Number.isInteger(episodesWatched) || episodesWatched < 0) {
-    errors.episodesWatched = 'Usa un numero entero mayor o igual a 0.'
+    errors.episodesWatched = 'Use an integer greater than or equal to 0.'
   }
 
   if (entry.anime.episodes !== null && episodesWatched > entry.anime.episodes) {
-    errors.episodesWatched = `No puede superar ${entry.anime.episodes} episodios.`
+    errors.episodesWatched = `Cannot exceed ${entry.anime.episodes} episodes.`
   }
 
   if (personalScore !== null && (!Number.isInteger(personalScore) || personalScore < 1 || personalScore > 10)) {
-    errors.personalScore = 'Elige un score del 1 al 10 o deja Sin score.'
+    errors.personalScore = 'Choose a score from 1 to 10 or leave No score.'
   }
 
   if (formState.notes.length > 500) {
-    errors.notes = 'Las notas no pueden superar 500 caracteres.'
+    errors.notes = 'Notes cannot exceed 500 characters.'
   }
 
   return errors

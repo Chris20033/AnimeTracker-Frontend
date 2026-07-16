@@ -23,7 +23,7 @@ export function AnimeDetailPage() {
   }
 
   const anime = detailQuery.data
-  const airedDate = anime.airedFrom ? new Intl.DateTimeFormat('es-MX', { dateStyle: 'medium' }).format(new Date(anime.airedFrom)) : 'Pendiente'
+  const airedDate = anime.airedFrom ? new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(anime.airedFrom)) : 'Pending'
   const typeLabel = formatAnimeType(anime.type)
   const statusLabel = formatAnimeStatus(anime.status)
 
@@ -31,16 +31,16 @@ export function AnimeDetailPage() {
     <section className="grid gap-6 py-8 lg:grid-cols-[minmax(18rem,0.42fr)_minmax(0,1fr)] lg:py-10">
       <aside className="ledger-panel h-max overflow-hidden">
         <div className="aspect-[3/4] bg-[var(--surface-inset)]">
-          {anime.imageUrl ? <img src={anime.imageUrl} alt={anime.title} className="size-full object-cover" /> : <div className="grid size-full place-items-center font-black text-[var(--soft)]">Sin imagen</div>}
+          {anime.imageUrl ? <img src={anime.imageUrl} alt={anime.title} className="size-full object-cover" /> : <div className="grid size-full place-items-center font-black text-[var(--soft)]">No image</div>}
         </div>
         <div className="grid gap-3 p-5">
           <Link to="/anime" className="ledger-link inline-flex min-h-11 items-center justify-center rounded-[var(--radius-md)] border border-[var(--line)] px-4">
-            Volver al catalogo
+            Back to catalog
           </Link>
           <FavoriteToggleButton source={anime.source} externalId={anime.externalId} title={anime.title} size="panel" />
           <div className="grid grid-cols-2 gap-3">
             <MetricCard label="Score" value={anime.score ?? 'N/A'} score={anime.score} />
-            <MetricCard label="Episodios" value={anime.episodes ?? 'N/A'} />
+            <MetricCard label="Episodes" value={anime.episodes ?? 'N/A'} />
           </div>
         </div>
         <div className="border-t border-[var(--line)] p-5">
@@ -60,11 +60,11 @@ export function AnimeDetailPage() {
           {anime.titleEnglish ? <p className="mt-3 text-lg font-bold text-[var(--muted)]">{anime.titleEnglish}</p> : null}
 
           <p className="mt-6 max-w-4xl text-base font-semibold leading-8 text-[var(--muted)]">
-            {anime.synopsis ?? 'Este anime todavia no tiene sinopsis disponible.'}
+            {anime.synopsis ?? 'This anime does not have a synopsis yet.'}
           </p>
 
           {anime.genres.length > 0 ? (
-            <div className="mt-6 flex flex-wrap gap-2" aria-label="Generos">
+            <div className="mt-6 flex flex-wrap gap-2" aria-label="Genres">
               {anime.genres.map((genre) => (
                 <span key={genre} className="rounded-full border border-[var(--line)] bg-[var(--surface-inset)] px-3 py-1.5 text-sm font-black text-[var(--page-fg)]">
                   {genre}
@@ -74,13 +74,13 @@ export function AnimeDetailPage() {
           ) : null}
         </article>
 
-        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" aria-label="Informacion de anime">
-          <InfoCard label="Estado" value={statusLabel ?? 'Pendiente'} />
-          <InfoCard label="Duracion" value={anime.duration ?? 'Pendiente'} />
-          <InfoCard label="Estudio" value={anime.studio ?? 'Pendiente'} />
-          <InfoCard label="Temporada" value={formatSeason(anime.season, anime.year)} />
-          <InfoCard label="Fecha de estreno" value={airedDate} />
-          <InfoCard label="ID externo" value={`${anime.source}-${anime.externalId}`} />
+        <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" aria-label="Anime information">
+          <InfoCard label="Status" value={statusLabel ?? 'Pending'} />
+          <InfoCard label="Duration" value={anime.duration ?? 'Pending'} />
+          <InfoCard label="Studio" value={anime.studio ?? 'Pending'} />
+          <InfoCard label="Season" value={formatSeason(anime.season, anime.year)} />
+          <InfoCard label="Premiere date" value={airedDate} />
+          <InfoCard label="External ID" value={`${anime.source}-${anime.externalId}`} />
         </section>
       </div>
     </section>

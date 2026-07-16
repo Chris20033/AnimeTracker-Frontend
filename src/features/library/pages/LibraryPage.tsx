@@ -80,9 +80,9 @@ export function LibraryPage() {
       <div className="ledger-panel relative overflow-hidden p-5 sm:p-8 lg:p-10">
         <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-[radial-gradient(circle_at_70%_35%,var(--accent-soft),transparent_18rem)] lg:block" />
         <div className="relative max-w-3xl">
-          <p className="ledger-kicker">Mi biblioteca</p>
-          <h1 className="mt-3 text-4xl ledger-title sm:text-5xl lg:text-6xl">Tu bitacora de anime</h1>
-          <p className="ledger-copy mt-4 text-base sm:text-lg">Organiza lo que ves, actualiza episodios y deja notas privadas sin perder el ritmo de temporada.</p>
+          <p className="ledger-kicker">My library</p>
+          <h1 className="mt-3 text-4xl ledger-title sm:text-5xl lg:text-6xl">Your anime logbook</h1>
+          <p className="ledger-copy mt-4 text-base sm:text-lg">Organize what you watch, update episodes, and keep private notes without losing seasonal momentum.</p>
         </div>
       </div>
 
@@ -90,25 +90,25 @@ export function LibraryPage() {
 
       <form onSubmit={handleSearchSubmit} className="ledger-surface grid gap-3 p-3 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:p-4" role="search">
         <label className="grid gap-2 text-sm font-black text-[var(--page-fg)]">
-          Buscar en mi biblioteca
+          Search my library
           <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} placeholder="Attack on Titan, Shingeki no Kyojin, 進撃の巨人..." className="min-h-12 rounded-[var(--radius-md)] border border-[var(--line)] bg-[var(--surface-inset)] px-4 py-3 font-semibold text-[var(--page-fg)] outline-none placeholder:text-[var(--soft)] focus:ring-4 focus:ring-[var(--focus)]" />
         </label>
         <button type="submit" className="min-h-12 self-end rounded-[var(--radius-md)] bg-[var(--accent)] px-5 py-3 font-black text-[var(--action-ink)] outline-none transition hover:-translate-y-0.5 focus:ring-4 focus:ring-[var(--focus)]">
-          Buscar
+          Search
         </button>
         {query ? (
           <button type="button" onClick={handleClearSearch} className="min-h-12 self-end rounded-[var(--radius-md)] border border-[var(--line)] px-5 py-3 font-black text-[var(--page-fg)] outline-none transition hover:bg-[var(--surface-inset)] focus:ring-4 focus:ring-[var(--focus)]">
-            Limpiar
+            Clear
           </button>
         ) : null}
       </form>
 
       <div ref={entriesHeaderRef} className="scroll-mt-24 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="ledger-kicker">Entradas</p>
-          <h2 className="mt-2 text-2xl ledger-title">{query ? `Busqueda: ${query}` : status ? libraryStatusLabels[status] : 'Toda la biblioteca'}</h2>
+          <p className="ledger-kicker">Entries</p>
+          <h2 className="mt-2 text-2xl ledger-title">{query ? `Search: ${query}` : status ? libraryStatusLabels[status] : 'Full library'}</h2>
         </div>
-        {pagination ? <p className="ledger-chip">Pagina {pagination.page} de {pagination.totalPages || 1}</p> : null}
+        {pagination ? <p className="ledger-chip">Page {pagination.page} of {pagination.totalPages || 1}</p> : null}
       </div>
 
       {libraryQuery.isLoading ? <LibrarySkeleton /> : null}

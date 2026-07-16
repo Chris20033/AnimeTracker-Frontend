@@ -31,13 +31,13 @@ export function ForgotPasswordForm() {
     try {
       await forgotPasswordMutation.mutateAsync({ email });
       setSuccessMessage(
-        "Si el correo existe, te enviaremos un enlace para restablecer tu contrasena.",
+        "If the email exists, we will send a link to reset your password.",
       );
     } catch (error) {
       setErrors({
         form: isAxiosError(error)
-          ? "Revisa el correo ingresado e intenta nuevamente."
-          : "No se pudo solicitar la recuperacion.",
+          ? "Check the email you entered and try again."
+          : "We couldn't request password recovery.",
       });
     }
   }
@@ -45,15 +45,15 @@ export function ForgotPasswordForm() {
   return (
     <form onSubmit={handleSubmit} className="ledger-panel p-5 sm:p-7">
       <div className="mb-6 border-b border-[var(--line)] pb-5">
-        <p className="ledger-kicker">Recuperacion segura</p>
+        <p className="ledger-kicker">Secure recovery</p>
         <h2 className="mt-2 text-2xl ledger-title">
-          Solicitar enlace temporal
+          Request temporary link
         </h2>
       </div>
 
       <div className="grid gap-5">
         <TextField
-          label="Correo"
+          label="Email"
           name="email"
           type="email"
           autoComplete="email"
@@ -81,15 +81,15 @@ export function ForgotPasswordForm() {
 
         <SubmitButton
           isLoading={forgotPasswordMutation.isPending}
-          loadingLabel="Enviando enlace..."
+          loadingLabel="Sending link..."
         >
-          Enviar enlace
+          Send link
         </SubmitButton>
 
         <p className="text-center text-sm text-[var(--muted)]">
-          Recordaste tu contrasena?{" "}
+          Remembered your password?{" "}
           <Link to="/login" className="ledger-link">
-            Inicia sesion
+            Sign in
           </Link>
         </p>
       </div>

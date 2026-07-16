@@ -8,14 +8,14 @@ describe('route states', () => {
   it('renders accessible route loading state', () => {
     render(<RouteLoadingState />)
 
-    expect(screen.getByText('Preparando la vista')).toBeInTheDocument()
+    expect(screen.getByText('Preparing the view')).toBeInTheDocument()
     expect(document.querySelector('[aria-busy="true"]')).toBeInTheDocument()
   })
 
   it('renders not found page with recovery link', () => {
     renderWithProviders(<NotFoundPage />)
 
-    expect(screen.getByText('Ruta no encontrada')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Volver al inicio' })).toHaveAttribute('href', '/')
+    expect(screen.getByText('Route not found')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Back to home' })).toHaveAttribute('href', '/')
   })
 })
