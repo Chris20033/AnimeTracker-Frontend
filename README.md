@@ -16,6 +16,14 @@ AnimeTracker es una aplicacion web para descubrir anime, organizar una bibliotec
 - Repositorio backend: https://github.com/Chris20033/AnimeTracker-Backend
 - Repositorio documentacion: https://github.com/Chris20033/AnimeTracker-Docs
 
+## Cuenta de demostración
+
+Puedes acceder a la aplicación con la siguiente cuenta de prueba, sin necesidad de registrarte.
+
+**Correo:** `example@example.com`
+
+**Contraseña:** `example123`
+
 ## Descripcion
 
 AnimeTracker esta pensado como un producto de seguimiento personal de anime. Permite buscar series, revisar detalles, guardar entradas en una biblioteca propia, marcar favoritos y consultar metricas utiles sobre el progreso del usuario.
@@ -25,7 +33,7 @@ El frontend esta organizado por features, consume una API REST mediante Axios y 
 ## Funcionalidades
 
 - Registro, inicio de sesion y cierre de sesion.
-- Recuperacion y restablecimiento de contrasena.
+- Recuperación y restablecimiento de contraseña (modo demostración: el enlace de restablecimiento se registra en la consola del backend en lugar de enviarse por correo).
 - Rutas publicas y privadas.
 - Perfil privado editable.
 - Perfil publico por username.
